@@ -59,9 +59,11 @@ npm \
 && npm i -g \
 prettier \
 eslint \
+emmet-ls \
 bash-language-server \
 dockerfile-language-server-nodejs \
 yaml-language-server \
+graphql-language-service-server \
 typescript \
 typescript-language-server \
 vscode-langservers-extracted \

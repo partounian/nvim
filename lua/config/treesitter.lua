@@ -5,6 +5,8 @@ require("nvim-treesitter.configs").setup({
     "cmake",
     "dockerfile",
     "go",
+--    "gitignore",
+    "graphql",
     "hcl",
     "html",
     "java",
@@ -16,7 +18,11 @@ require("nvim-treesitter.configs").setup({
     "lua",
     "markdown",
     "python",
+    "regex",
+    "sql",
     "toml",
+    "tsx",
+    "typescript",
     "yaml",
   }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing

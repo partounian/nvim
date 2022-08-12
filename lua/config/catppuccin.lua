@@ -29,6 +29,7 @@ catppuccin.setup({
   },
   integrations = {
     treesitter = true,
+    treesitter_context = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
@@ -51,13 +52,8 @@ catppuccin.setup({
     gitgutter = true,
     gitsigns = true,
     telescope = true,
-    nvimtree = {
-      enabled = true,
-      show_root = true,
-      transparent_panel = false,
-    },
     neotree = {
-      enabled = false,
+      enabled = true,
       show_root = true,
       transparent_panel = false,
     },
@@ -82,5 +78,5 @@ catppuccin.setup({
     mini = true,
   },
 })
-vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])

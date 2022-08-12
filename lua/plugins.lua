@@ -81,6 +81,8 @@ packer.startup(function(use)
     run = ":TSUpdate",
   })
 
+  use("nvim-treesitter/nvim-treesitter-context")
+
   use("nvim-treesitter/nvim-treesitter-textobjects")
 
   use("RRethy/nvim-treesitter-endwise")
@@ -276,6 +278,23 @@ packer.startup(function(use)
     config = function()
       require("nvim-ts-autotag").setup()
     end,
+  })
+
+  -- use({ "github/copilot.vim", branch = "release" })
+
+  use({
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup()
+      end, 100)
+    end,
+  })
+
+  use({
+    "zbirenbaum/copilot-cmp",
+    module = "copilot_cmp",
   })
 
   use({

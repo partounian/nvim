@@ -30,7 +30,9 @@ capabilities.textDocument.foldingRange = {
 
 local servers = {
   "bashls",
+  "cssls",
   "dockerls",
+  "emmet_ls",
   "jsonls",
   "pyright",
   "sumneko_lua",
