@@ -217,7 +217,6 @@ packer.startup(function(use)
     end,
   })
 
-
   use({ "edluffy/specs.nvim", config = get_config("specs") })
 
   use({ "mfussenegger/nvim-ts-hint-textobject" })
@@ -304,6 +303,12 @@ packer.startup(function(use)
   })
 
   use({
+    "max397574/colortils.nvim",
+    cmd = "Colortils",
+    config = function()
+      require("colortils").setup()
+    end,
+  })
 
   -- NOTE: use https://github.com/Akianonymus/nvim-colorizer.lua ?
   -- NOTE: use https://github.com/NvChad/nvim-colorizer.lua ?
@@ -317,7 +322,15 @@ packer.startup(function(use)
   })
 end)
 
--- TODO: ????
--- use {"lukas-reineke/headlines.nvim", config = get_config("headlines")}
--- https://github.com/glepnir/lspsaga.nvim
--- use 'glepnir/lspsaga.nvim'
+-- TODO:
+-- use({
+--   "someone-stole-my-name/yaml-companion.nvim",
+--   requires = {
+--     { "neovim/nvim-lspconfig" },
+--     { "nvim-lua/plenary.nvim" },
+--     { "nvim-telescope/telescope.nvim" },
+--   },
+--   config = function()
+--     require("telescope").load_extension("yaml_schema")
+--   end,
+-- })
