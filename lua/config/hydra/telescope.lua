@@ -13,6 +13,7 @@ local hint = [[
  _k_: keymaps       _;_: commands history
  _O_: options       _?_: search history
  _n_: notifications _/_: search in file
+ _m_: make
 
  ^
  _<Enter>_: Telescope   _q_: Exit
@@ -36,10 +37,10 @@ Hydra({
     { "f", cmd("Telescope find_files") },
     { "t", cmd("Telescope live_grep") },
     { "h", cmd("Telescope help_tags"), { desc = "vim help" } },
-    { "H", cmd("Telescope header") },
+    { "H", cmd("Telescope heading") },
     { "k", cmd("Telescope keymaps") },
     { "O", cmd("Telescope vim_options") },
-    { "n", cmd("Telescope notify") },
+    { "m", cmd("Telescope make") },
     { "p", cmd("Telescope projects"), { desc = "projects" } },
     { "P", cmd("Telescope packer") },
     { "r", cmd("Telescope oldfiles"), { desc = "recently opened files" } },
