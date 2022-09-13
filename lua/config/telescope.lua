@@ -5,12 +5,6 @@ local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
   extensions = {
-    fzf = {
-      fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
-    },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
     },
@@ -119,6 +113,7 @@ telescope.setup({
 })
 
 telescope.load_extension("projects")
+telescope.load_extension("fzf")
 telescope.load_extension("zoxide")
 telescope.load_extension("heading")
 telescope.load_extension("file_browser")
