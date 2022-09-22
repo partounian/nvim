@@ -237,7 +237,9 @@ packer.startup(function(use)
   use({
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup({})
+      require("fidget").setup({ window = {
+        blend = 0,
+      } })
     end,
   })
 
@@ -261,6 +263,7 @@ packer.startup(function(use)
   use({
     "anuvyklack/hydra.nvim",
     requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
+    commit = "ea91aa820a6cecc57bde764bb23612fff26a15de",
     config = get_config("hydra"),
   })
 
@@ -343,6 +346,8 @@ packer.startup(function(use)
     },
     config = get_config("windows"),
   })
+
+  use({ "axieax/urlview.nvim", config = get_config("urlview") })
 end)
 
 -- TODO:
