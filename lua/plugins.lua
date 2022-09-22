@@ -285,7 +285,10 @@ packer.startup(function(use)
 
   use({
     "zbirenbaum/copilot-cmp",
-    module = "copilot_cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
   })
 
   use({
@@ -340,7 +343,6 @@ packer.startup(function(use)
     },
     config = get_config("windows"),
   })
-
 end)
 
 -- TODO:
