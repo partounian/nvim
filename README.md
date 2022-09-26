@@ -68,6 +68,8 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Terminal integration via [nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)
 - Fancy notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - Better writing with [vale](https://vale.sh/) integration via [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
+- Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), and [nightfox](https://github.com/EdenEast/nightfox.nvim)
 - Fast startup 🚀
 
 ### Navigation 🧭
@@ -177,6 +179,7 @@ For advanced spell checks via [vim-grammarous](https://github.com/rhysd/vim-gram
 | n    | sd                     | Delete surrounding                                     |
 | n    | sr                     | Replace surrounding                                    |
 | n    | \<c-Tab\>              | Start auto completion (without typing anything)        |
+| n/v  | ga                     | Start mini.align (align text)                          |
 | n    | gcc                    | Toggle line comment                                    |
 | n/v  | gc                     | Toggle line comment (works with movements like `gcip`) |
 | n    | ss                     | Search 2 char (mini.jump2d)                            |

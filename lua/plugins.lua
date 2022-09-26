@@ -122,19 +122,19 @@ packer.startup(function(use)
           "DiffviewToggleFiles",
           "DiffviewFocusFiles",
         },
-        config = get_config("diffview"),
+        config = get_config("git.diffview"),
       },
     },
     cmd = "Neogit",
-    config = get_config("neogit"),
+    config = get_config("git.neogit"),
   })
 
-  use({ "f-person/git-blame.nvim", config = get_config("git-blame") })
+  use({ "f-person/git-blame.nvim", config = get_config("git.git-blame") })
 
   use({
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = get_config("gitsigns"),
+    config = get_config("git.gitsigns"),
   })
 
   use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
@@ -151,14 +151,14 @@ packer.startup(function(use)
     config = get_config("nvim-bqf"),
   })
 
-  use({ "neovim/nvim-lspconfig", config = get_config("lsp") })
+  use({ "neovim/nvim-lspconfig", config = get_config("lsp.lsp") })
 
   use({ "onsails/lspkind-nvim" })
 
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
-    config = get_config("null-ls"),
+    config = get_config("lsp.null-ls"),
   })
 
   use({
@@ -189,20 +189,18 @@ packer.startup(function(use)
 
   use({ "folke/which-key.nvim", config = get_config("which-key") })
 
-  use({ "junegunn/vim-easy-align", cmd = "EasyAlign" }) -- no lua alternative, https://github.com/Vonr/align.nvim not working for me
-
   use({ "rhysd/vim-grammarous", cmd = "GrammarousCheck" })
 
   use({ "RRethy/vim-illuminate", config = get_config("illuminate") })
 
   if settings.theme == "nightfox" then
-    use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
-  elseif settings.theme == "catppuccino" then
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
+    use({ "EdenEast/nightfox.nvim", config = get_config("themes.nightfox") })
   elseif settings.theme == "tundra" then
-    use({ "sam4llis/nvim-tundra", config = get_config("tundra") })
+    use({ "sam4llis/nvim-tundra", config = get_config("themes.tundra") })
+  elseif settings.theme == "tokyonight" then
+    use({ "folke/tokyonight.nvim", branch = "main", config = get_config("themes.tokyonight") })
   else
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
+    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("themes.catppuccin") })
   end
 
   use({ "tweekmonster/startuptime.vim" })
@@ -213,7 +211,7 @@ packer.startup(function(use)
 
   use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
-  use({ "echasnovski/mini.nvim", branch = "stable", config = get_config("mini") })
+  use({ "echasnovski/mini.nvim", branch = "main", config = get_config("mini") })
 
   use({
     "waylonwalker/Telegraph.nvim",
@@ -229,7 +227,7 @@ packer.startup(function(use)
   use({
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
-    config = get_config("alpha-nvim"),
+    config = get_config("alpha.alpha"),
   })
 
   use({ "SmiteshP/nvim-navic" })
@@ -297,7 +295,7 @@ packer.startup(function(use)
   use({
     "williamboman/mason.nvim",
     requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
-    config = get_config("mason"),
+    config = get_config("lsp.mason"),
   })
 
   use({
