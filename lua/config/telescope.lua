@@ -39,19 +39,20 @@ telescope.setup({
   },
   defaults = {
     file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png" },
+    -- needs to be disabled to work properly
     -- used for grep_string and live_grep
-    vimgrep_arguments = {
-      "rg",
-      "--follow",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--no-ignore",
-      "--trim",
-    },
+    -- vimgrep_arguments = {
+    --   "rg",
+    --   "--follow",
+    --   "--color=never",
+    --   "--no-heading",
+    --   "--with-filename",
+    --   "--line-number",
+    --   "--column",
+    --   "--smart-case",
+    --   "--no-ignore",
+    --   "--trim",
+    -- },
     mappings = {
       i = {
         -- Close on first esc instead of going to normal mode
