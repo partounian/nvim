@@ -272,8 +272,6 @@ packer.startup(function(use)
     end,
   })
 
-  -- use({ "github/copilot.vim", branch = "release" })
-
   use({
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
@@ -290,6 +288,12 @@ packer.startup(function(use)
     config = function()
       require("copilot_cmp").setup()
     end,
+  })
+
+  use({
+    "jedrzejboczar/possession.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = get_config("possession"),
   })
 
   use({
