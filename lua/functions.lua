@@ -182,6 +182,7 @@ function M.custom_lsp_attach(client, bufnr)
       e = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
       -- f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
       i = { "<cmd>LspInfo<cr>", "Connected Language Servers" },
+      h = { require("hover").hover, "Hover Info (hover.nvim)" },
       k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
       l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
       n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
