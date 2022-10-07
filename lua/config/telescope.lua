@@ -27,9 +27,6 @@ telescope.setup({
     },
   },
   pickers = {
-    find_files = {
-      hidden = false,
-    },
     buffers = {
       ignore_current_buffer = true,
       sort_lastused = true,

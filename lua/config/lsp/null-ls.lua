@@ -6,7 +6,8 @@ nls.setup({
     nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
     nls.builtins.diagnostics.eslint_d,
     nls.builtins.diagnostics.fish,
-    --nls.builtins.formatting.prettier,
+    nls.builtins.formatting.rustywind, -- tailwind class organizer
+    nls.builtins.formatting.prettier,
     nls.builtins.formatting.npm_groovy_lint,
     nls.builtins.formatting.terraform_fmt,
     nls.builtins.formatting.black,

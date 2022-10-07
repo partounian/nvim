@@ -53,6 +53,7 @@ require("mason-tool-installer").setup({
     "texlab",
     "lua-language-server",
     "pyright",
+    "tailwindcss",
     "terraform-ls",
     "yaml-language-server",
     -- Formatter
