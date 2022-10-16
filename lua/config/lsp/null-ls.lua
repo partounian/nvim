@@ -20,7 +20,18 @@ nls.setup({
       end),
     }),
     -- can't use eslint_d until the above works with it
-    -- nls.builtins.diagnostics.eslint_d,
+    -- nls.builtins.diagnostics.eslint_d.with({
+    --   cwd = h.cache.by_bufnr(function(params)
+    --     return u.root_pattern(
+    --       ".eslintrc",
+    --       ".eslintrc.js",
+    --       ".eslintrc.cjs",
+    --       ".eslintrc.yaml",
+    --       ".eslintrc.yml",
+    --       ".eslintrc.json"
+    --     )(params.bufname)
+    --   end),
+    -- }),
     nls.builtins.diagnostics.fish,
     nls.builtins.diagnostics.commitlint,
     nls.builtins.formatting.rustywind, -- tailwind class organizer
