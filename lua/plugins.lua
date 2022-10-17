@@ -87,8 +87,6 @@ packer.startup(function(use)
 
   use("RRethy/nvim-treesitter-endwise")
 
-  use({ "David-Kunz/markid" })
-
   use({
     "hrsh7th/nvim-cmp",
     requires = {
