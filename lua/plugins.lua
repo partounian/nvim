@@ -42,6 +42,7 @@ packer.startup(function(use)
 
   use({
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     config = get_config("telescope"),
   })
@@ -58,6 +59,7 @@ packer.startup(function(use)
   use({
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
+    cmd = "NeoTree*",
     requires = {
       {
         -- only needed if you want to use the commands with "_with_window_picker" suffix
@@ -81,11 +83,11 @@ packer.startup(function(use)
     run = ":TSUpdate",
   })
 
-  use("nvim-treesitter/nvim-treesitter-context")
+  use({ "nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter" })
 
-  use("nvim-treesitter/nvim-treesitter-textobjects")
+  use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
 
-  use("RRethy/nvim-treesitter-endwise")
+  use({ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" })
 
   use({
     "hrsh7th/nvim-cmp",
@@ -137,7 +139,7 @@ packer.startup(function(use)
 
   use({ "tpope/vim-fugitive" }) -- yeah this is not lua but one of the best Vim plugins ever
 
-  use("p00f/nvim-ts-rainbow")
+  use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
 
   use({
     "kevinhwang91/nvim-bqf",
@@ -205,7 +207,7 @@ packer.startup(function(use)
 
   use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("go"), ft = { "go" } })
 
-  use({ "LudoPinelli/comment-box.nvim", config = get_config("comment-box") })
+  use({ "LudoPinelli/comment-box.nvim", cmd = "CB*", config = get_config("comment-box") })
 
   use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
@@ -296,6 +298,8 @@ packer.startup(function(use)
 
   use({
     "williamboman/mason.nvim",
+    cmd = "Mason*",
+    module = "mason-tool-installer",
     requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
     config = get_config("lsp.mason"),
   })
@@ -308,9 +312,6 @@ packer.startup(function(use)
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
     },
-    config = function()
-      require("config.dap").setup()
-    end,
   })
 
   use({
@@ -340,6 +341,7 @@ packer.startup(function(use)
 
   use({
     "anuvyklack/windows.nvim",
+    event = "VimEnter",
     requires = {
       "anuvyklack/middleclass",
       "anuvyklack/animation.nvim",
@@ -347,7 +349,14 @@ packer.startup(function(use)
     config = get_config("windows"),
   })
 
-  use({ "axieax/urlview.nvim", config = get_config("urlview") })
+  use({ "axieax/urlview.nvim", cmd = "Urlview", config = get_config("urlview") })
+
+  use({ "famiu/bufdelete.nvim" })
+
+  use({
+    "ironhouzi/starlite-nvim",
+    config = get_config("starlite-nvim"),
+  })
 end)
 
 -- TODO:

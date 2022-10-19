@@ -20,7 +20,7 @@ M.list = false
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- enable PackerSync on plugins.lua save
-M.packer_auto_sync = true
+M.packer_auto_sync = false
 -- set cmdheight
 M.cmdheight = 1
 -- Disable integration of Neovim's statusline in your Tmux status
@@ -41,28 +41,28 @@ M.disable_dashboard_quick_links = false
 -- treesitter parsers to be installed
 -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 M.treesitter_ensure_installed = {
-    "bash",
-    "css",
-    "cmake",
-    "dockerfile",
-    "go",
---    "gitignore",
-    "graphql",
-    "hcl",
-    "html",
-    "javascript",
-    "json",
-    "latex",
-    "ledger",
-    "lua",
-    "markdown",
-    "python",
-    "regex",
-    "sql",
-    "toml",
-    "tsx",
-    "typescript",
-    "yaml",
+  "bash",
+  "css",
+  "cmake",
+  "dockerfile",
+  "go",
+  --    "gitignore",
+  "graphql",
+  "hcl",
+  "html",
+  "javascript",
+  "json",
+  "latex",
+  "ledger",
+  "lua",
+  "markdown",
+  "python",
+  "regex",
+  "sql",
+  "toml",
+  "tsx",
+  "typescript",
+  "yaml",
 }
 
 return M
