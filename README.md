@@ -1,8 +1,28 @@
-# My Neovim Configuration
+<h1 align="center">My Nvim Configuration</h1>
+
+<div align="center"><p>
+    <a href="https://github.com/neovim/neovim">
+      <img src="https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white" alt="Neovim"/>
+    </a>
+    <a href="https://github.com/Allaman/nvim/pulse">
+      <img src="https://img.shields.io/github/last-commit/Allaman/nvim" alt="Last commit"/>
+    </a>
+    <a href="https://github.com/Allaman/nvim/issues">
+      <img src="https://img.shields.io/github/issues/Allaman/nvim.svg?style=flat-square&label=Issues&color=F05F40" alt="Github issues"/>
+    </a>
+    <a href="https://github.com/Allaman/nvim/actions/workflows/ci.yml">
+      <img src="https://github.com/Allaman/nvim/actions/workflows/ci.yml/badge.svg" alt="CI Status"/>
+    </a>
+    <a href="https://github.com/Allaman/nvim/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/Allaman/nvim?style=flat-square&logo=MIT&label=License" alt="License"/>
+    </a>
+</p>
+
+</div>
 
 ![](./docs/screenshot.png)
 
-💻 This configuration is working on my [Manjaro](https://manjaro.org/) Linux as well as on my macOS and requires Neovim >= 0.8!
+💻 This configuration works on my [Manjaro](https://manjaro.org/) Linux as well as on my macOS and requires Neovim >= 0.8!
 
 Have a look at my [rice](https://github.com/Allaman/rice) how my Linux machine is configured and at my [mac-setup](https://github.com/Allaman/mac-setup) how my MBP is configured. My [dotfiles](https://github.com/Allaman/dotfiles) are also on GitHub.
 
@@ -38,7 +58,6 @@ See `./lua/config/which.lua` for details.
 <details>
 <summary>Hydra modes for better shortcut handling</summary>
 
-![](./docs/hydra-git.png)
 ![](./docs/hydra-window.png)
 ![](./docs/hydra-telescope.png)
 ![](./docs/hydra-spelling.png)
@@ -65,13 +84,14 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Package management and plugin configuration via [Packer](https://github.com/wbthomason/packer.nvim)
 - Mnemonic keyboard mappings inspired by [Spacemacs](https://www.spacemacs.org/) via [which-key.nvim](https://github.com/folke/which-key.nvim); no more than three keystrokes for each keybinding
 - Submodes powered by [Hydra.nvim](https://github.com/anuvyklack/hydra.nvim)
+- Complete transformation via [noice.nvim](https://github.com/folke/noice.nvim)
 - Fully featured status line via [mini.nvim](https://github.com/echasnovski/mini.nvim)
 - Terminal integration via [nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)
 - Fancy notifications via [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - Better writing with [vale](https://vale.sh/) integration via [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
 - Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), and [nightfox](https://github.com/EdenEast/nightfox.nvim)
-- Fast startup 🚀
+- Fast startup < 150 ms 🚀
 
 ### Navigation 🧭
 
@@ -90,7 +110,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Auto formatting via [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - Excellent Go support via LSP and [go.nvim](https://github.com/ray-x/go.nvim) including sensible keybindings
 - Always know where you are in your code via [nvim-navic](https://github.com/SmiteshP/nvim-navic)
-- Git integration via [Neogit](https://github.com/TimUntersberger/neogit), [gitsigns](https://github.com/lewis6991/gitsigns.nvim), [git-blame](https://github.com/f-person/git-blame.nvim)
+- Git integration via [Neogit](https://github.com/TimUntersberger/neogit) and [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - Outlining symbols with [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
 - Snippets provided by [Luasnip](https://github.com/L3MON4D3/LuaSnip) and [friendly snippets](https://github.com/rafamadriz/friendly-snippets) with autocompletion
 - Schema integration via LSPs for Kubernetes, package.json, GitHub workflows, gitlab-ci.yml, kustomization.yaml, and more
@@ -133,7 +153,7 @@ I created an installation [script](install.sh) that sets up all required tools o
 
 For now, it works on Debian/Ubuntu and Arch. MacOS will be added soon.
 
-💡If you are a Tmux user have a look at vim-tpipelins's [requirements](https://github.com/vimpostor/vim-tpipeline#installation) for your tmux.conf and enable it in `./lua/user-conf.lua`.
+💡If you are a Tmux user have a look at vim-tpipelins's [requirements](https://github.com/vimpostor/vim-tpipeline#installation) for your tmux.conf and enable it in `./lua/settings.lua`.
 
 USE AT YOUR OWN RISK!!
 
@@ -199,27 +219,27 @@ Each plugin to be installed is defined in `plugins.lua` and each plugin has its 
 
 ```sh
 .
-├── after
-│   └── ftplugin      # file specific settings
-├── init.lua          # main entry point
+├── after            # file specific settings
+├── init.lua         # main entry point
 ├── lua
-│   ├── config/       # each plugin configuration is in its own file
-│   ├── autocmd.lua   # autocommands
-│   ├── functions.lua # lua functions to extend functionality
-│   ├── mappings.lua  # Vim keymaps definitions -> config/which.lua for more
-│   ├── options.lua   # non plugin related (vim) options
-│   ├── plugins.lua   # define plugins to be managed via Packer
-│   └── user-conf.lua # parameters to configure some settings
-├── plugin            # packer_compiled
-├── snippets          # snippets directory (luasnip style)
-└── spell             # my spell files linked from another repo
+│   ├── autocmd.lua  # autocommands
+│   ├── config/      # plugin configurations
+│   ├── mappings.lua # Keymappings not in plugin configuration
+│   ├── options.lua  # non plugin related (vim) options
+│   ├── plugins.lua  # define plugins to be managed via Packer
+│   ├── settings.lua # parameters to configure some settings
+│   ├── winbar.lua   # winbar configuration
+│   └── utils.lua    # lua code to extend functionality
+├── plugin           # packer_compiled
+├── snippets         # snippets directory (luasnip style)
+└── spell            # my spell files linked from another repo
 ```
 
 ## User configuration
 
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-All options can be found in `./lua/user-conf.lua`.
+All options can be found in `./lua/settings.lua`.
 
 ## Remove plugins
 

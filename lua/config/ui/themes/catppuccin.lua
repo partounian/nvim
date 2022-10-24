@@ -85,7 +85,7 @@ catppuccin.setup({
     telekasten = false,
     symbols_outline = true,
     mini = true,
-    fidget = true,
+    fidget = false,
   },
 })
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
