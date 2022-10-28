@@ -105,6 +105,18 @@ packer.startup(function(use)
 
   use({ "LudoPinelli/comment-box.nvim", cmd = "CB*", config = get_config("coding.comment-box") })
 
+  use({
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false,
+        },
+      })
+    end,
+  })
+
   use({ "echasnovski/mini.nvim", branch = "main", config = get_config("coding.mini") })
 
   use({ "mfussenegger/nvim-ts-hint-textobject" })
@@ -344,10 +356,22 @@ packer.startup(function(use)
   })
 
   use({
-    "jedrzejboczar/possession.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = get_config("possession"),
+    "olimorris/persisted.nvim",
+    --module = "persisted", -- For lazy loading
+    config = function()
+      require("persisted").setup({
+        use_git_branch = true, -- create session files based on the branch of the git enabled repository
+      })
+    end,
   })
+
+  -- use({
+  --   "jedrzejboczar/possession.nvim",
+  --   requires = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("possession").setup()
+  --   end,
+  -- })
 
   use({ "tweekmonster/startuptime.vim" })
   -- }}} Other

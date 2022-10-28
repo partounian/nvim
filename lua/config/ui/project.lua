@@ -2,7 +2,7 @@ require("project_nvim").setup({
   patterns = {
     ".git",
     ".terraform",
-    "package.json",
+    -- "package.json",
     ".terraform",
     "go.mod",
     "requirements.yml",
