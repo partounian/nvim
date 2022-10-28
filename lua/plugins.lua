@@ -246,6 +246,7 @@ packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
     cmd = "Telescope",
+    module = "telescope",
     config = get_config("ui.telescope"),
   })
   use({ "jvgrootveld/telescope-zoxide" })
