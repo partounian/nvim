@@ -106,6 +106,17 @@ packer.startup(function(use)
   use({ "LudoPinelli/comment-box.nvim", cmd = "CB*", config = get_config("coding.comment-box") })
 
   use({
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup({
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+        trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+      })
+    end,
+  })
+
+  use({
     "JoosepAlviste/nvim-ts-context-commentstring",
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -132,6 +143,13 @@ packer.startup(function(use)
     "windwp/nvim-ts-autotag",
     config = function()
       require("nvim-ts-autotag").setup()
+    end,
+  })
+
+  use({
+    "beauwilliams/focus.nvim",
+    config = function()
+      require("focus").setup()
     end,
   })
 
