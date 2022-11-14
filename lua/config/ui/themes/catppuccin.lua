@@ -77,7 +77,7 @@ catppuccin.setup({
     fern = false,
     barbar = false,
     bufferline = false,
-    markdown = false,
+    markdown = true,
     lightspeed = false,
     ts_rainbow = true,
     hop = false,
@@ -88,5 +88,4 @@ catppuccin.setup({
     fidget = false,
   },
 })
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme catppuccin-macchiato]])
