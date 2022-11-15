@@ -34,7 +34,12 @@ nls.setup({
     -- }),
     nls.builtins.diagnostics.fish,
     nls.builtins.diagnostics.commitlint,
-    nls.builtins.formatting.rustywind, -- tailwind class organizer
+    -- tailwind class organizer
+    nls.builtins.formatting.rustywind.with({
+      cwd = h.cache.by_bufnr(function(params)
+        return u.root_pattern("tailwind.config.js")(params.bufname)
+      end),
+    }),
     nls.builtins.formatting.stylelint,
     nls.builtins.formatting.prettierd.with({
       cwd = h.cache.by_bufnr(function(params)
