@@ -50,6 +50,7 @@ require("mason-tool-installer").setup({
     "dockerfile-language-server",
     "json-lsp",
     "graphql-language-service-cli",
+    "marksman",
     "typescript-language-server",
     "texlab",
     "lua-language-server",

@@ -257,6 +257,13 @@ packer.startup(function(use)
     requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
     config = get_config("lsp.mason"),
   })
+  use({
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup()
+    end,
+    before = "nvim-lspconfig",
+  })
   -- }}} LSP
 
   -- {{{ UI
@@ -341,7 +348,9 @@ packer.startup(function(use)
       "MunifTanjim/nui.nvim",
       { "rcarriga/nvim-notify", config = get_config("ui.notify") },
     },
+    disable = settings.disable_noice,
   })
+
   -- }}} UI
 
   -- {{{ Other

@@ -17,6 +17,7 @@ local servers = {
   "dockerls",
   "emmet_ls",
   "jsonls",
+  "marksman",
   "pyright",
   "sumneko_lua",
   "tailwindcss",
