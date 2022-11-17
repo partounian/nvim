@@ -150,9 +150,6 @@ packer.startup(function(use)
     "beauwilliams/focus.nvim",
     config = function()
       require("focus").setup({
-        -- not working or must be used together with autoresize = false
-        enable = false,
-        -- not working
         autoresize = false,
       })
     end,
