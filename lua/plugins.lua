@@ -101,7 +101,7 @@ packer.startup(function(use)
 
   use({ "rhysd/vim-grammarous", ft = { "markdown", "latex" }, config = get_config("coding.grammarous") })
 
-  use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("coding.go"), ft = { "go" } })
+  use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("coding.go") })
 
   use({ "LudoPinelli/comment-box.nvim", cmd = "CB*", config = get_config("coding.comment-box") })
 
