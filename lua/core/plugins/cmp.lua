@@ -1,3 +1,12 @@
+-- GitHub Copilot
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+    return false
+  end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
 local M = {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -8,8 +17,13 @@ local M = {
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot-cmp",
   },
   config = function()
+    require("copilot").setup()
+    require("copilot_cmp").setup()
+
     local cmp = require("cmp")
     local lspkind = require("lspkind")
 
@@ -21,6 +35,7 @@ local M = {
           mode = "symbol",
           menu = {
             buffer = "BUF",
+            copilot = "",
             rg = "RG",
             nvim_lsp = "LSP",
             path = "PATH",
@@ -57,6 +72,7 @@ local M = {
         end, { "i", "s" }),
       },
       sources = {
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
         { name = "buffer", keyword_length = 5 },

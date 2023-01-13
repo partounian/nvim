@@ -8,6 +8,8 @@ local M = {
     "mfussenegger/nvim-ts-hint-textobject",
     "windwp/nvim-ts-autotag",
     "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-context",
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
   config = function()
     local settings = require("core.settings")
@@ -53,9 +55,19 @@ local M = {
           },
         },
       },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
     })
 
     require("nvim-ts-autotag").setup()
+
+    require("treesitter-context").setup({
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+        trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    })
   end,
 }
 

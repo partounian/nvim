@@ -1,6 +1,9 @@
 local M = {
   "echasnovski/mini.nvim",
   branch = "main",
+  -- dependencies = {
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  -- },
   config = function()
     require("mini.surround").setup({
       -- Number of lines within which surrounding is searched
@@ -21,7 +24,13 @@ local M = {
       },
     })
 
-    require("mini.comment").setup({})
+    require("mini.comment").setup({
+      hooks = {
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring()
+        end,
+      },
+    })
     require("mini.jump").setup({
       -- Module mappings. Use `''` (empty string) to disable one.
       mappings = {

@@ -8,6 +8,7 @@ local M = {
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     "ptethng/telescope-makefile",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
   },
   config = function()
     local settings = require("core.settings")
@@ -132,11 +133,13 @@ local M = {
       },
     })
 
+    telescope.load_extension("fzf")
     telescope.load_extension("projects")
     telescope.load_extension("zoxide")
     telescope.load_extension("heading")
     telescope.load_extension("ui-select")
     telescope.load_extension("make")
+    telescope.load_extension("persisted")
     if settings.enable_noice then
       telescope.load_extension("noice")
     end
