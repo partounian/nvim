@@ -24,12 +24,12 @@ end
 
 -- Return telescope files command
 M.telescope_find_files = function()
-  -- local path = vim.loop.cwd() .. "/.git"
-  -- if M.path_exists(path) then
-  --   return "Telescope git_files"
-  -- else
+  local path = vim.loop.cwd() .. "/.git"
+  if M.path_exists(path) then
+    return "Telescope git_files show_untracked=true"
+  else
     return "Telescope find_files"
-  -- end
+  end
 end
 
 -- toggle quickfixlist

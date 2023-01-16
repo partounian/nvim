@@ -6,7 +6,8 @@ M.theme = "tokyonight"
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
-M.grepprg = "rg --hidden --vimgrep --smart-case --"
+-- vimgrep : https://github.com/BurntSushi/ripgrep/blob/fe97c0a152cabc1bc07ec36b4b1e27cd230c3014/crates/core/app.rs#L3044
+-- M.grepprg = "rg --hidden --vimgrep --smart-case --"
 -- set numbered lines
 M.number = true
 -- enable mouse see :h mouse
