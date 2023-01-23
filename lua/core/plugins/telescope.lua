@@ -9,8 +9,8 @@ local M = {
     "nvim-telescope/telescope-ui-select.nvim",
     "ptethng/telescope-makefile",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "kkharji/sqlite.lua",
-    "nvim-telescope/telescope-frecency.nvim"
+    -- "kkharji/sqlite.lua",
+    -- "nvim-telescope/telescope-frecency.nvim"
   },
   config = function()
     local settings = require("core.settings")
@@ -142,7 +142,7 @@ local M = {
     telescope.load_extension("ui-select")
     telescope.load_extension("make")
     telescope.load_extension("persisted")
-    telescope.load_extension("frecency")
+    -- telescope.load_extension("frecency")
     if settings.enable_noice then
       telescope.load_extension("noice")
     end

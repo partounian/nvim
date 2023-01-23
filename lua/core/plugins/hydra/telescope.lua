@@ -33,7 +33,7 @@ Hydra({
   body = "<Leader>s",
   heads = {
     { "c", cmd("Telescope commands"), { desc = "execute command" } },
-    { "f", cmd("Telescope frecency") },
+    { "f", cmd("Telescope find_files") },
     { "t", cmd("Telescope live_grep") },
     { "h", cmd("Telescope help_tags"), { desc = "vim help" } },
     { "H", cmd("Telescope heading") },
