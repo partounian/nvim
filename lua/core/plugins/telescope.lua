@@ -8,7 +8,9 @@ local M = {
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     "ptethng/telescope-makefile",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "kkharji/sqlite.lua",
+    "nvim-telescope/telescope-frecency.nvim"
   },
   config = function()
     local settings = require("core.settings")
@@ -22,7 +24,7 @@ local M = {
         -- do we need this? For what?
         fzf = {
           fuzzy = true, -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
+          override_generic_sorter = false, -- override the generic sorter
           override_file_sorter = true, -- override the file sorter
           case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
         },
@@ -140,6 +142,7 @@ local M = {
     telescope.load_extension("ui-select")
     telescope.load_extension("make")
     telescope.load_extension("persisted")
+    telescope.load_extension("frecency")
     if settings.enable_noice then
       telescope.load_extension("noice")
     end
