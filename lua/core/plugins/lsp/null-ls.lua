@@ -6,20 +6,7 @@ local u = require("null-ls.utils")
 nls.setup({
   sources = {
     nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
-    nls.builtins.diagnostics.eslint.with({
-      cwd = h.cache.by_bufnr(function(params)
-        return u.root_pattern(
-          ".eslintrc",
-          ".eslintrc.js",
-          ".eslintrc.cjs",
-          ".eslintrc.yaml",
-          ".eslintrc.yml",
-          ".eslintrc.json"
-        )(params.bufname)
-      end),
-    }),
-    -- can't use eslint_d until the above works with it
-    -- nls.builtins.diagnostics.eslint_d.with({
+    -- nls.builtins.diagnostics.eslint.with({
     --   cwd = h.cache.by_bufnr(function(params)
     --     return u.root_pattern(
     --       ".eslintrc",
@@ -31,6 +18,19 @@ nls.setup({
     --     )(params.bufname)
     --   end),
     -- }),
+    -- can't use eslint_d until the above works with it
+    nls.builtins.diagnostics.eslint_d.with({
+      cwd = h.cache.by_bufnr(function(params)
+        return u.root_pattern(
+          ".eslintrc",
+          ".eslintrc.js",
+          ".eslintrc.cjs",
+          ".eslintrc.yaml",
+          ".eslintrc.yml",
+          ".eslintrc.json"
+        )(params.bufname)
+      end),
+    }),
     nls.builtins.diagnostics.fish,
     -- nls.builtins.formatting.prettier.with({
     --   extra_args = { "--single-quote", "false" },
