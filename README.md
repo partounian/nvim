@@ -119,7 +119,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 
 If you have [Docker](https://www.docker.com/) on your system you can try out this config via the provided `Dockerfile`
 
-💡 All dependencies of my config are installed except texlab, tectonic, which makes it at **1.9GB** a rather large image
+💡 Due to installing required tools like LSPs, CLI apps, etc. the image is approximately 3 GB large
 
 ### Build the image
 
@@ -152,8 +152,6 @@ docker run --name nvim --rm -it --entrypoint=/bin/bash nvim
 I created an installation [script](install.sh) that sets up all required tools on a fresh machine to work with my Neovim config.
 
 For now, it works on Debian/Ubuntu and Arch. MacOS will be added soon.
-
-💡If you are a Tmux user have a look at vim-tpipelins's [requirements](https://github.com/vimpostor/vim-tpipeline#installation) for your tmux.conf and enable it in `./lua/core/settings.lua`.
 
 USE AT YOUR OWN RISK!!
 
