@@ -21,11 +21,14 @@ local M = {
     "zbirenbaum/copilot-cmp",
   },
   config = function()
-    require("copilot").setup()
-    require("copilot_cmp").setup()
-
     local cmp = require("cmp")
     local lspkind = require("lspkind")
+
+    require("copilot").setup({
+      suggestion = { enabled = false },
+      panel = { enabled = true },
+    })
+    require("copilot_cmp").setup()
 
     cmp.setup({
       formatting = {
@@ -58,6 +61,14 @@ local M = {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         }),
+        -- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
+        -- ["<Tab>"] = vim.schedule_wrap(function(fallback)
+        --   if cmp.visible() and has_words_before() then
+        --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        --   else
+        --     fallback()
+        --   end
+        -- end),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
