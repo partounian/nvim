@@ -17,18 +17,18 @@ local M = {
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    "zbirenbaum/copilot.lua",
-    "zbirenbaum/copilot-cmp",
+    "github/copilot.vim",
+    "hrsh7th/cmp-copilot",
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
 
-    require("copilot").setup({
-      suggestion = { enabled = false },
-      panel = { enabled = true },
-    })
-    require("copilot_cmp").setup()
+    -- require("copilot").setup({
+    --   suggestion = { enabled = false },
+    --   panel = { enabled = true },
+    -- })
+    -- require("copilot_cmp").setup()
 
     cmp.setup({
       formatting = {
@@ -61,14 +61,6 @@ local M = {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         }),
-        -- https://github.com/zbirenbaum/copilot-cmp#tab-completion-configuration-highly-recommended
-        -- ["<Tab>"] = vim.schedule_wrap(function(fallback)
-        --   if cmp.visible() and has_words_before() then
-        --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        --   else
-        --     fallback()
-        --   end
-        -- end),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
