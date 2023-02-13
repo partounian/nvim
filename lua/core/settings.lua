@@ -1,6 +1,6 @@
 local M = {}
 
--- theme: nightfox, tokyonight, tundra; default is catppuccin
+-- theme: nightfox, tokyonight, tundra, kanagawa; default is catppuccin
 -- refer to the themes settings file for different styles
 M.theme = "tokyonight"
 -- Toggle global status line
@@ -20,10 +20,6 @@ M.showtabline = 1
 M.list = false
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
--- Disable integration of Neovim's statusline in your Tmux status
--- Disable https://github.com/norcalli/nvim-colorizer.lua
--- due to causing lags with live_grep in some circumstances
--- M.disable_colorizer = false
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = true
 -- Disable winbar with nvim-navic location
@@ -62,6 +58,7 @@ M.treesitter_ensure_installed = {
   "yaml",
 }
 
+-- Tools that should be installed by Mason(-tool-install)
 M.mason_tool_installer_ensure_installed = {
   -- LSP
   "bash-language-server",
@@ -88,6 +85,63 @@ M.mason_tool_installer_ensure_installed = {
   "yamllint",
   -- DAP
   "debugpy",
+}
+
+-- enable greping in hidden files
+M.telescope_grep_hidden = true
+
+-- which patterns to ignore in file switcher
+M.telescope_file_ignore_patterns = {
+  "%.7z",
+  "%.JPEG",
+  "%.JPG",
+  "%.MOV",
+  "%.RAF",
+  "%.burp",
+  "%.bz2",
+  "%.cache",
+  "%.class",
+  "%.dll",
+  "%.docx",
+  "%.dylib",
+  "%.epub",
+  "%.exe",
+  "%.flac",
+  "%.ico",
+  "%.ipynb",
+  "%.jar",
+  "%.jpeg",
+  "%.jpg",
+  "%.lock",
+  "%.mkv",
+  "%.mov",
+  "%.mp4",
+  "%.otf",
+  "%.pdb",
+  "%.pdf",
+  "%.png",
+  "%.rar",
+  "%.sqlite3",
+  "%.svg",
+  "%.tar",
+  "%.tar.gz",
+  "%.ttf",
+  "%.webp",
+  "%.zip",
+  ".git/",
+  ".gradle/",
+  ".idea/",
+  ".settings/",
+  ".vale/",
+  ".vscode/",
+  "__pycache__/*",
+  "build/",
+  "env/",
+  "gradle/",
+  "node_modules/",
+  "smalljre_*/*",
+  "target/",
+  "vendor/*",
 }
 
 return M
