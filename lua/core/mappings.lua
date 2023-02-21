@@ -25,7 +25,7 @@ map("i", "<C-l>", function()
 end)
 
 -- search like you are used to
-map("n", "<C-f>", "/", { desc = "Search buffer" })
+-- map("n", "<C-f>", "/", { desc = "Search buffer" })
 
 -- save like your are used to
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
