@@ -51,6 +51,7 @@ M.treesitter_ensure_installed = {
   "python",
   "regex",
   "sql",
+  "terraform",
   "toml",
   "tsx",
   "typescript",
