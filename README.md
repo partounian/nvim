@@ -104,7 +104,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 ### Coding 🖥️
 
 - Auto completion powered by [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- Built-in LSP configured via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- Built-in LSP configured via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [mason](https://github.com/williamboman/mason.nvim), and [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
 - Debugging for Go and Python via [nvim-dap](https://github.com/mfussenegger/nvim-dap) and friends
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and [Tresitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) for your syntax needs
 - Auto formatting via [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
@@ -164,6 +164,7 @@ There are some tools that are required in order to use some features/plugins:
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [fzf](https://github.com/junegunn/fzf)
+- make and gcc or clang for [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 
 For neo-tree delete functionality:
 
@@ -189,7 +190,7 @@ Go related dependencies are managed by `go.nvim` and are installed by running `:
 
 #### All other
 
-All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim) and [Mason tool installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim). Tools are installed by running `:MasonToolsInstall` (in `vim.fn.std path("data") .. "mason"`). [Mason requirements](https://GitHub.com/William beman/mason.nvim#requirements) must be available on your system.
+All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim). Tools are installed by running `:MasonToolsInstall` (in `vim.fn.std path("data") .. "mason"`). [Mason requirements](https://GitHub.com/William beman/mason.nvim#requirements) must be available on your system.
 
 ## Bindings
 
@@ -257,6 +258,10 @@ Each plugin to be installed is defined in `./lua/core/plugins/` in a separate fi
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
 All options can be found in `./lua/core/settings.lua`.
+
+## Adding LSPs
+
+You can add LSPs via `lsp_servers` in settings.lua. The server will be installed by Mason und loaded by nvim-lspconfig. If you want to pass settings for the LSP have a look at `./lua/core/plugins/lsp/settings/` how to add settings for specific LSPs.
 
 ## Remove plugins
 

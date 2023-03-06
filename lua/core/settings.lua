@@ -1,6 +1,6 @@
 local M = {}
 
--- theme: nightfox, tokyonight, tundra, kanagawa; default is catppuccin
+-- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin
 -- refer to the themes settings file for different styles
 M.theme = "tokyonight"
 -- Toggle global status line
@@ -59,20 +59,25 @@ M.treesitter_ensure_installed = {
   "yaml",
 }
 
--- Tools that should be installed by Mason(-tool-install)
-M.mason_tool_installer_ensure_installed = {
-  -- LSP
-  "bash-language-server",
-  "dockerfile-language-server",
-  "json-lsp",
-  "graphql-language-service-cli",
+-- LSPs that should be installed by Mason-lspconfig
+M.lsp_servers = {
+  "bashls",
+  "cssls",
+  "dockerls",
+  "docker_compose_language_service",
+  "emmet_ls",
+  "graphql", -- remove and stick to graphql treesitter only?
+  "jsonls",
   "marksman",
-  "typescript-language-server",
-  "lua-language-server",
-  "pyright",
-  "tailwindcss-language-server",
-  "terraform-ls",
-  "yaml-language-server",
+  "tailwindcss",
+  "lua_ls",
+  "terraformls",
+  "tsserver",
+  "yamlls",
+}
+
+-- Tools that should be installed by Mason
+M.tools = {
   -- Formatter
   "black",
   "prettier",

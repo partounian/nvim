@@ -1,3 +1,4 @@
+local utils = require("core.utils.functions")
 local map = vim.keymap.set
 
 -- Remap for dealing with visual line wraps
@@ -24,29 +25,32 @@ map("i", "<C-l>", function()
   return require("core.utils.functions").escapePair()
 end)
 
--- search like you are used to
--- map("n", "<C-f>", "/", { desc = "Search buffer" })
-
 -- save like your are used to
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- toggles
 map("n", "<leader>th", function()
+  utils.notify("Toggling hidden chars", vim.log.levels.INFO, "core.mappings")
   vim.o.list = vim.o.list == false and true or false
 end, { desc = "Toggle hidden chars" })
 map("n", "<leader>tl", function()
+  utils.notify("Toggling signcolumn", vim.log.levels.INFO, "core.mappings")
   vim.o.signcolumn = vim.o.signcolumn == "yes" and "no" or "yes"
-end, { desc = "Toggle sgincolumn" })
+end, { desc = "Toggle signcolumn" })
 map("n", "<leader>tv", function()
+  utils.notify("Toggling virtualedit", vim.log.levels.INFO, "core.mappings")
   vim.o.virtualedit = vim.o.virtualedit == "all" and "block" or "all"
 end, { desc = "Toggle virtualedit" })
 map("n", "<leader>ts", function()
+  utils.notify("Toggling spell", vim.log.levels.INFO, "core.mappings")
   vim.o.spell = vim.o.spell == false and true or false
 end, { desc = "Toggle spell" })
 map("n", "<leader>tw", function()
+  utils.notify("Toggling wrap", vim.log.levels.INFO, "core.mappings")
   vim.o.wrap = vim.o.wrap == false and true or false
 end, { desc = "Toggle wrap" })
 map("n", "<leader>tc", function()
+  utils.notify("Toggling cursorline", vim.log.levels.INFO, "core.mappings")
   vim.o.cursorline = vim.o.cursorline == false and true or false
 end, { desc = "Toggle cursorline" })
 map(
@@ -83,24 +87,17 @@ wk.register({
   ["<tab>"] = { "<cmd>e#<cr>", "Prev buffer" },
   b = {
     name = "Buffers",
-    b = {
-      "<cmd>Telescope buffers<cr>",
-      "Find buffer",
-    },
     D = {
       "<cmd>%bd|e#|bd#<cr>",
       "Close all but the current buffer",
     },
     d = { "<cmd>Bdelete<cr>", "Close buffer" },
   },
+  l = { "LSP" }, -- core.plugins.lsp.keys
+  lw = { "Workspaces" }, -- core.plugins.lsp.keys
   f = {
     name = "Files",
-    b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
-    f = { "<cmd>" .. require("core.utils.functions").project_files() .. "<cr>", "Find File" },
-    p = { "<cmd>Neotree reveal toggle<cr>", "Toggle Filetree" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     s = { "<cmd>w<cr>", "Save Buffer" },
-    z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
   },
   m = {
     name = "Misc",
@@ -120,4 +117,4 @@ wk.register({
   s = { "Search" },
   w = { "Windows" },
   z = { "Spelling" },
-}, { prefix = "<leader>", mode = "n", default_options })
+}, { prefix = "<leader>", mode = "n", {} })
