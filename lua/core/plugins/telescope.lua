@@ -21,7 +21,7 @@ local M = {
     { "<leader>sp", "<cmd>Telescope projects<cr>", desc = "Projects" },
     { "<leader>sR", "<cmd>Telescope regiesters<cr>", desc = "Registers" },
     { "<leader>ss", "<cmd>Telescope grep_string<cr>", desc = "Text under cursor" },
-    { "<leader>sS", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
+    { "<leader>sS", "<cmd>Telescope symbols<cr>", desc = "Emoji" },
     { "<leader>s:", "<cmd>Telescope search_history<cr>", desc = "Search History" },
     { "<leader>s;", "<cmd>Telescope command_history<cr>", desc = "Command history" },
     {
@@ -37,6 +37,7 @@ local M = {
     { "<leader>fb", "<cmd>Telescope file_browser grouped=true<cr>", desc = "Filebrowser" },
     { "<leader>fz", "<cmd>Telescope zoxide list<cr>", desc = "Zoxide" },
     { "<leader>ff", "<cmd>" .. require("core.utils.functions").project_files() .. "<cr>", desc = "Open file" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
     -- misc
     { "<leader>mm", "<cmd>Telescope make<cr>", desc = "Run make" },
     { "<leader>mt", "<cmd>Telescope<cr>", desc = "Telescope" },

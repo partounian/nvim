@@ -89,6 +89,7 @@ M.tools = {
   "shellcheck",
   "tflint",
   "yamllint",
+  "ruff",
   -- DAP
   "debugpy",
 }
