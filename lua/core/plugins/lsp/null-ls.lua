@@ -37,11 +37,11 @@ nls.setup({
     nls.builtins.formatting.goimports,
     nls.builtins.formatting.gofumpt,
     -- tailwind class organizer
-    nls.builtins.formatting.rustywind.with({
-      cwd = h.cache.by_bufnr(function(params)
-        return u.root_pattern("tailwind.config.js")(params.bufname)
-      end),
-    }),
+    -- nls.builtins.formatting.rustywind.with({
+    --   cwd = h.cache.by_bufnr(function(params)
+    --     return u.root_pattern("tailwind.config.js")(params.bufname)
+    --   end),
+    -- }),
     nls.builtins.code_actions.shellcheck,
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
