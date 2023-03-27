@@ -2,6 +2,7 @@ local M = {}
 
 -- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin
 -- refer to the themes settings file for different styles
+-- I use oxocoarbon when I want a light background
 M.theme = "tokyonight"
 -- Toggle global status line
 M.global_statusline = true
@@ -64,7 +65,6 @@ M.lsp_servers = {
   "bashls",
   "cssls",
   "dockerls",
-  "docker_compose_language_service",
   "emmet_ls",
   "graphql", -- remove and stick to graphql treesitter only?
   "jsonls",
