@@ -27,10 +27,6 @@ local plugins = {
   -- add any other plugins here
 }
 require("lazy").setup(plugins, {
-  spec = {
-    { "folke/LazyVim", import = "lazyvim.plugins" },
-    { import = "lazyvim.plugins.extras.coding.copilot" },
-  },
   root = root .. "/plugins",
 })
 

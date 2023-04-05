@@ -17,18 +17,18 @@ local M = {
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    "zbirenbaum/copilot.lua",
-    "zbirenbaum/copilot-cmp",
+    "github/copilot.vim",
+    "hrsh7th/cmp-copilot",
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
 
-    require("copilot").setup({
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    })
-    require("copilot_cmp").setup()
+    -- require("copilot").setup({
+    --   suggestion = { enabled = false },
+    --   panel = { enabled = true },
+    -- })
+    -- require("copilot_cmp").setup()
 
     cmp.setup({
       formatting = {
@@ -76,10 +76,10 @@ local M = {
       },
       sources = {
         { name = "copilot" },
-        { name = "nvim_lsp", group_index = 2 },
+        { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
         { name = "buffer", keyword_length = 5 },
-        { name = "luasnip", group_index = 2 },
+        { name = "luasnip" },
         { name = "calc" },
         { name = "path" },
         { name = "rg", keyword_length = 5 },
