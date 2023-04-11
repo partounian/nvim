@@ -1,46 +1,34 @@
-local M = {
-  -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    },
-  },
+-- GitHub Copilot
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+    return false
+  end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
 
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-calc",
-      "lukas-reineke/cmp-rg",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      {
-        "zbirenbaum/copilot-cmp",
-        dependencies = "copilot.lua",
-        opts = {},
-        config = function(_, opts)
-          local copilot_cmp = require("copilot_cmp")
-          copilot_cmp.setup(opts)
-          -- attach cmp source whenever copilot attaches
-          -- fixes lazy-loading issues with the copilot cmp source
-          require("core.utils.functions").on_attach(function(client)
-            if client.name == "copilot" then
-              copilot_cmp._on_insert_enter()
-            end
-          end)
-        end,
-      },
-    },
+local M = {
+  "hrsh7th/nvim-cmp",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-calc",
+    "lukas-reineke/cmp-rg",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "github/copilot.vim",
+    "hrsh7th/cmp-copilot",
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
+
+    -- require("copilot").setup({
+    --   suggestion = { enabled = false },
+    --   panel = { enabled = true },
+    -- })
+    -- require("copilot_cmp").setup()
 
     cmp.setup({
       formatting = {
@@ -69,21 +57,10 @@ local M = {
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = function()
-          local entry = cmp.get_selected_entry()
-
-          if entry and entry.source.name == "copilot" then
-            return cmp.mapping.confirm({
-              select = true,
-              behavior = cmp.ConfirmBehavior.Replace,
-            })
-          end
-
-          return cmp.mapping.confirm({
-            select = false,
-            behavior = cmp.ConfirmBehavior.Replace,
-          })
-        end,
+        ["<CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -107,24 +84,6 @@ local M = {
         { name = "path" },
         { name = "rg", keyword_length = 5 },
         -- { omni = true }, -- completion for vimtex - is this necessary?
-      },
-      sorting = {
-        priority_weight = 2,
-        comparators = {
-          require("copilot_cmp.comparators").prioritize,
-
-          -- Below is the default comparitor list and order for nvim-cmp
-          cmp.config.compare.offset,
-          -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
-        },
       },
     })
 
