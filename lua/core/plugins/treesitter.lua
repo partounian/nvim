@@ -1,5 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
+  version = false,
   build = ":TSUpdate",
   event = "BufReadPost",
   dependencies = {
@@ -58,6 +59,9 @@ local M = {
       context_commentstring = {
         enable = true,
         enable_autocmd = false,
+        config = {
+          sql = "-- %s",
+        },
       },
     })
 

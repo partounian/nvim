@@ -1,6 +1,6 @@
 local M = {
   "echasnovski/mini.nvim",
-  branch = "main",
+  version = false,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "JoosepAlviste/nvim-ts-context-commentstring",
