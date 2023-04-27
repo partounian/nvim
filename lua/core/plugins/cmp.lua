@@ -18,8 +18,8 @@ local M = {
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    -- "github/copilot.vim",
-    -- "hrsh7th/cmp-copilot",
+    "github/copilot.vim",
+    "hrsh7th/cmp-copilot",
   },
   config = function()
     local cmp = require("cmp")
@@ -108,40 +108,4 @@ local M = {
   end,
 }
 
-return {
-  M,
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-    },
-    build = ":Copilot auth",
-    config = function(_, opts)
-      -- still need to run Copilot suggestion for copilot to work for some reason
-      require("copilot").setup({
-        panel = { enabled = false },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-        },
-        server_opts_overrides = {
-          settings = {
-            advanced = {
-              inlineSuggestCount = 5,
-            },
-          },
-        },
-      })
-
-      local copilot_cmp = require("copilot_cmp")
-      copilot_cmp.setup(opts)
-      -- attach cmp source whenever copilot attaches
-      -- fixes lazy-loading issues with the copilot cmp source
-      require("core.utils.functions").on_attach(function(client)
-        if client.name == "copilot" then
-          copilot_cmp._on_insert_enter()
-        end
-      end)
-    end,
-  },
-}
+return M
