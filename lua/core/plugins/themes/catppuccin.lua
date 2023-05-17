@@ -87,4 +87,4 @@ catppuccin.setup({
     fidget = false,
   },
 })
-vim.cmd([[colorscheme catppuccin-frappe]])
+vim.cmd([[colorscheme catppuccin-latte]])
