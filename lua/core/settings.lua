@@ -1,8 +1,8 @@
 local M = {}
 
--- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin
+-- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is tokyonight
 -- refer to the themes settings file for different styles
--- I use oxocoarbon when I want a light background
+-- i use catppuccin for light theme
 M.theme = "tokyonight"
 -- Toggle global status line
 M.global_statusline = true
@@ -67,7 +67,7 @@ M.lsp_servers = {
   "cssls",
   "dockerls",
   "emmet_ls",
-  "graphql", -- remove and stick to graphql treesitter only?
+  -- "graphql", -- remove and stick to graphql treesitter only?
   "jsonls",
   "marksman",
   "tailwindcss",
