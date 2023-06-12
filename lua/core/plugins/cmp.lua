@@ -20,6 +20,7 @@ local M = {
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "github/copilot.vim",
     "hrsh7th/cmp-copilot",
+    "saadparwaiz1/cmp_luasnip",
   },
   config = function()
     local cmp = require("cmp")

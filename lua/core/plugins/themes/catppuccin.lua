@@ -70,6 +70,10 @@ catppuccin.setup({
       enabled = true,
       colored_indent_levels = false,
     },
+    dropbar = {
+      enabled = true,
+    },
+    alpha = true,
     dashboard = false,
     neogit = true,
     vim_sneak = false,
@@ -87,4 +91,4 @@ catppuccin.setup({
     fidget = false,
   },
 })
-vim.cmd([[colorscheme catppuccin-latte]])
+vim.cmd([[colorscheme catppuccin-macchiato]])

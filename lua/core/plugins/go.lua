@@ -5,8 +5,7 @@ local M = {
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
-  -- event = { "CmdlineEnter" },
-  -- ft = { "go", "gomod" },
+  ft = { "go", "gomod" },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   config = function()
     local icons = require("core.utils.icons")

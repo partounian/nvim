@@ -1,9 +1,8 @@
 local M = {}
 
--- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is tokyonight
+-- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin 
 -- refer to the themes settings file for different styles
--- i use catppuccin for light theme
-M.theme = "tokyonight"
+M.theme = "catppuccin"
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
@@ -23,8 +22,6 @@ M.list = false
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = true
--- Disable winbar with nvim-navic location
-M.disable_winbar = false
 -- Number of recent files shown in dashboard
 -- 0 disables showing recent files
 M.dashboard_recent_files = 5
@@ -53,6 +50,7 @@ M.treesitter_ensure_installed = {
   "regex",
   "ruby",
   "sql",
+  "rust",
   "terraform",
   "toml",
   "tsx",
@@ -69,12 +67,17 @@ M.lsp_servers = {
   "emmet_ls",
   -- "graphql", -- remove and stick to graphql treesitter only?
   "jsonls",
+  "gopls",
+  "ltex",
   "marksman",
   "tailwindcss",
   "lua_ls",
   "solargraph",
+  "rust_analyzer",
+  "tailwindcss",
   "terraformls",
   "tsserver",
+  "typst_lsp",
   "yamlls",
 }
 
@@ -94,6 +97,7 @@ M.tools = {
   "ruff",
   -- DAP
   "debugpy",
+  "codelldb",
 }
 
 -- enable greping in hidden files
