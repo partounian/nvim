@@ -1,6 +1,6 @@
 local M = {}
 
--- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin 
+-- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin
 -- refer to the themes settings file for different styles
 M.theme = "catppuccin"
 -- Toggle global status line
@@ -70,7 +70,6 @@ M.lsp_servers = {
   "gopls",
   "ltex",
   "marksman",
-  "tailwindcss",
   "lua_ls",
   "solargraph",
   "rust_analyzer",
