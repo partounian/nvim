@@ -66,6 +66,7 @@ map(
   { desc = "Toggle Virtualtext" }
 )
 map("n", "<leader>ts", "<cmd>SymbolsOutline<cr>", { desc = "Toggle SymbolsOutline" })
+map("n", "<leader>tS", "<cmd>windo set scb!<cr>", { desc = "Toggle Scrollbind" })
 
 local wk = require("which-key")
 
@@ -101,7 +102,6 @@ wk.register({
   },
   m = {
     name = "Misc",
-    C = { "<cmd>:CBcatalog<cr>", "Commentbox Catalog" },
     l = { "<cmd>source ~/.config/nvim/snippets/*<cr>", "Reload snippets" },
     p = { "<cmd>Lazy check<cr>", "Lazy check" },
   },
