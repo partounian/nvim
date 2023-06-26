@@ -1,9 +1,22 @@
-local M = {
-  "echasnovski/mini.nvim",
-  branch = "main",
-  event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    require("mini.surround").setup({
+return {
+
+  {
+    "echasnovski/mini.comment",
+    event = { "BufReadPre", "BufNewFile" },
+    config = true,
+    opts = {
+      hooks = {
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring()
+        end,
+      },
+    },
+  },
+
+  {
+    "echasnovski/mini.surround",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
       -- Number of lines within which surrounding is searched
       n_lines = 50,
 
@@ -20,17 +33,13 @@ local M = {
         replace = "sr", -- Replace surrounding
         update_n_lines = "sn", -- Update `n_lines`
       },
-    })
+    },
+  },
 
-    require("mini.comment").setup({
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring()
-        end,
-      },
-    })
-
-    require("mini.jump").setup({
+  {
+    "echasnovski/mini.jump",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
       -- Module mappings. Use `''` (empty string) to disable one.
       mappings = {
         forward = "f",
@@ -49,8 +58,13 @@ local M = {
         -- Delay between jump and automatic stop if idle (no jump is done)
         idle_stop = 10000000,
       },
-    })
-    require("mini.jump2d").setup({
+    },
+  },
+
+  {
+    "echasnovski/mini.jump2d",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
       -- Function producing jump spots (byte indexed) for a particular line.
       -- For more information see |MiniJump2d.start|.
       -- If `nil` (default) - use |MiniJump2d.default_spotter|
@@ -79,20 +93,73 @@ local M = {
       mappings = {
         start_jumping = "",
       },
-    })
+    },
+  },
 
-    require("mini.align").setup()
-    require("mini.test").setup()
+  {
+    "echasnovski/mini.align",
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
-    local hipatterns = require("mini.hipatterns")
-    hipatterns.setup({
-      highlighters = {
+  {
+    "echasnovski/mini.test",
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
-        -- TODO: tailwind integration?
-        hex_color = hipatterns.gen_highlighter.hex_color(),
+  {
+    "echasnovski/mini.hipatterns",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = function()
+      local hi = require("mini.hipatterns")
+      return {
+        highlighters = {
+          -- TODO: tailwind integration?
+          hex_color = hi.gen_highlighter.hex_color(),
+        },
+      }
+    end,
+  },
+
+  {
+    "echasnovski/mini.files",
+    event = { "VimEnter" },
+    opts = {
+      windows = {
+        -- Whether to show preview of directory under cursor
+        preview = true,
       },
-    })
-  end,
+    },
+    config = function(_, opts)
+      local show_dotfiles = true
+      local filter_show = function()
+        return true
+      end
+      local filter_hide = function(fs_entry)
+        return not vim.startswith(fs_entry.name, ".")
+      end
+      local toggle_dotfiles = function()
+        show_dotfiles = not show_dotfiles
+        local new_filter = show_dotfiles and filter_show or filter_hide
+        MiniFiles.refresh({ content = { filter = new_filter } })
+      end
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesBufferCreate",
+        callback = function(args)
+          local buf_id = args.data.buf_id
+          -- Tweak left-hand side of mapping to your liking
+          vim.keymap.set("n", "H", toggle_dotfiles, { desc = "Toggle hidden files", buffer = buf_id })
+        end,
+      })
+      require("mini.files").setup(opts)
+    end,
+    keys = {
+      {
+        "-",
+        function()
+          MiniFiles.open()
+        end,
+        desc = "Open Mini Files",
+      },
+    },
+  },
 }
-
-return M
