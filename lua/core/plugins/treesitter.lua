@@ -61,6 +61,7 @@ local M = {
         enable_autocmd = false,
         config = {
           sql = "-- %s",
+          tpl = "// %s",
         },
       },
     })
