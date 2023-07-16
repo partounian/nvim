@@ -74,9 +74,11 @@ M.lsp_servers = {
   "lua_ls",
   "ltex",
   "marksman",
+  "nil_ls",
   "pylsp", -- might be python-lsp-server
-  "solargraph",
+  "pyright",
   "rust_analyzer",
+  "solargraph",
   "tailwindcss",
   "terraformls",
   "tsserver",
