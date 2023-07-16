@@ -71,9 +71,10 @@ M.lsp_servers = {
   -- "graphql", -- remove and stick to graphql treesitter only?
   "jsonls",
   "gopls",
+  "lua_ls",
   "ltex",
   "marksman",
-  "lua_ls",
+  "pylsp", -- might be python-lsp-server
   "solargraph",
   "rust_analyzer",
   "tailwindcss",
