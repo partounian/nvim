@@ -4,6 +4,7 @@ return {
 
   {
     "akinsho/git-conflict.nvim",
+    version = "*",
     config = true,
     enabled = function()
       if settings.merge_conflict_tool == "git-conflict" then
