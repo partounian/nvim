@@ -7,7 +7,7 @@ return {
     version = "*",
     config = true,
     enabled = function()
-      if settings.merge_conflict_tool == "git-conflict" then
+      if settings.merge_conflict_tool == "git-conflict" or settings.merge_conflict_tool == "BOTH" then
         return true
       end
       return false
@@ -23,7 +23,7 @@ return {
       "DiffviewFocusFiles",
     },
     enabled = function()
-      if settings.merge_conflict_tool == "diffview" then
+      if settings.merge_conflict_tool == "diffview" or settings.merge_conflict_tool == "BOTH" then
         return true
       end
       return false

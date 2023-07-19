@@ -31,7 +31,7 @@ M.disable_dashboard_header = false
 M.disable_dashboard_quick_links = false
 -- which tool to use for handling git merge conflicts
 -- choose between "git-conflict" and "diffview"
-M.merge_conflict_tool = "git-conflict"
+M.merge_conflict_tool = "BOTH"
 -- treesitter parsers to be installed
 -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 M.treesitter_ensure_installed = {
