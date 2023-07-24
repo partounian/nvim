@@ -1,4 +1,5 @@
 local catppuccin = require("catppuccin")
+local settings = require("core.settings")
 
 catppuccin.setup({
   dim_inactive = {
@@ -91,4 +92,9 @@ catppuccin.setup({
     fidget = false,
   },
 })
-vim.cmd([[colorscheme catppuccin-macchiato]])
+
+if settings.theme_variant == "dark" then
+  vim.cmd([[colorscheme catppuccin-macchiato]])
+else
+  vim.cmd([[colorscheme catppuccin-latte]])
+end

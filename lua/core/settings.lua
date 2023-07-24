@@ -3,6 +3,7 @@ local M = {}
 -- theme: nightfox, tokyonight, tundra, kanagawa, oxocarbon; default is catppuccin
 -- refer to the themes settings file for different styles
 M.theme = "catppuccin"
+M.theme_variant = "dark"
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
