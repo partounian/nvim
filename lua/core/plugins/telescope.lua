@@ -62,16 +62,8 @@ local M = {
     -- trim the indentation at the beginning of presented line
     table.insert(vimgrep_arguments, "--trim")
 
-    local fzf_opts = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    }
-
     telescope.setup({
       extensions = {
-        fzf = fzf_opts,
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },
@@ -175,7 +167,6 @@ local M = {
       },
     })
 
-    telescope.load_extension("fzf")
     telescope.load_extension("projects")
     telescope.load_extension("zoxide")
     telescope.load_extension("heading")

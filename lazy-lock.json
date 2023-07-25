@@ -80,6 +80,7 @@
   "starlite-nvim": { "branch": "main", "commit": "bc204069859e4e85a057b92ac61700f3f46c3e41" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "e03ff55962417b69c85ef41424079bb0580546ba" },
+  "telescope-fzf-native.nvim": { "branch": "main", "commit": "9bc8237565ded606e6c366a71c64c0af25cd7a50" },
   "telescope-heading.nvim": { "branch": "main", "commit": "dbd3bde034117e4dc716732093e8290462e1e388" },
   "telescope-makefile": { "branch": "master", "commit": "6e5b5767751dbf73ad4f126840dcf1abfc38e891" },
   "telescope-symbols.nvim": { "branch": "master", "commit": "f2060117d965df4a626f068a4ebbd8ee051aa076" },
