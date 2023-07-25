@@ -2,15 +2,16 @@ local M = {
   "lervag/vimtex",
   lazy = false,
   config = function()
+    local settings = require("core.settings")
     local g = vim.g
     g.tex_flavor = "latex"
     -- TODO: config for winodows - if vim.fn.has("win32")
     if vim.fn.has("unix") == 1 then
-      g.vimtex_view_method = "skim"
+      g.vimtex_view_method = settings.vimtex_view_method
       g.vimtex_view_skim_sync = 1
       g.vimtex_view_skim_activate = 1
     end
-    g.vimtex_compiler_method = "tectonic"
+    g.vimtex_compiler_method = settings.vimtex_compiler_method
     g.vimtex_mappings_enabled = false
     -- Do not auto open quickfix on compile errors
     g.vimtex_quickfix_mode = 0

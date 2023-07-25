@@ -33,6 +33,9 @@ M.disable_dashboard_quick_links = false
 -- which tool to use for handling git merge conflicts
 -- choose between "git-conflict" and "diffview"
 M.merge_conflict_tool = "BOTH"
+M.vimtex_compiler_method = "tectonic"
+-- Tool to view PDFs generated from LaTex
+M.vimtex_view_method = "skim"
 -- treesitter parsers to be installed
 -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 M.treesitter_ensure_installed = {

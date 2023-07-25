@@ -91,6 +91,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Better writing with [ltex-ls](https://valentjn.github.io/ltex/index.html)
 - Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
 - Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), [nightfox](https://github.com/EdenEast/nightfox.nvim), and more
+- Health check via `checkhealth core`
 - Fast startup < 150 ms 🚀
 
 ### Navigation 🧭
@@ -165,16 +166,15 @@ There are some tools that are required in order to use some features/plugins:
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [fzf](https://github.com/junegunn/fzf)
-- make and gcc or clang for [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 
-For neo-tree delete functionality:
+For the neo-tree delete functionality:
 
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
 
 For Latex functionality:
 
-- [Tectonic](https://tectonic-typesetting.github.io/en-US/)
-- [Skim](https://skim-app.sourceforge.io/)
+- [Tectonic](https://tectonic-typesetting.github.io/en-US/) (can be changed in `settings.lua`)
+- [Skim](https://skim-app.sourceforge.io/) (can be changed in `settings.lua`)
 
 ### LSPs, Formatting, Linters, DAP
 
@@ -238,18 +238,19 @@ Hit `<leader>` to start `which-key` which gives you more mappings grouped by top
 └── spell            # my spell files linked from another repo
 ```
 
-`tree1 lua/core`
+`tree -L 1 lua/core`
 
 ```sh
 lua/core
 ├── autocmd.lua      # autocmds for various things
-├── config           # configuration folder for plugins
 ├── globals.lua      # global functions
+├── health.lua       # checkhealth implementation
 ├── lazy.lua         # Lazy configuration
 ├── mappings.lua     # key bindings
 ├── options.lua      # vim options
 ├── plugins          # plugins and their configuration
 ├── settings.lua     # user settings to configure
+└── utils            # utility stuff
 ```
 
 Each plugin to be installed is defined in `./lua/core/plugins/` in a separate file.
