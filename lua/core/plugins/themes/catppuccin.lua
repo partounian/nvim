@@ -92,9 +92,4 @@ catppuccin.setup({
     fidget = false,
   },
 })
-
-if settings.theme_variant == "dark" then
-  vim.cmd([[colorscheme catppuccin-macchiato]])
-else
-  vim.cmd([[colorscheme catppuccin-latte]])
-end
+vim.cmd("colorscheme " .. vim.g.config.theme.catppuccin.variant)

@@ -1,7 +1,8 @@
 local M = {}
 
 local utils = require("core.utils.functions")
-local settings = require("core.settings")
+local plugins = vim.g.config.plugins
+local tex = vim.g.config.plugins.tex
 
 local health = vim.health
 local _ok = health.ok
@@ -44,6 +45,7 @@ local exec_found_template = "'%s' executable found"
 
 M.check = function()
   vim.health.start("System configuration")
+  local os = utils.getOS()
 
   if not utils.isNeovimVersionsatisfied(10) then
     _warn("This config probably won't work very well with Neovim < 0.10")
@@ -51,13 +53,18 @@ M.check = function()
     _ok("This config will work with your Neovim version")
   end
 
-  local os = utils.getOS()
   if os == "NixOS" then
     _warn("This config downloads and runs binaries which might cause an issue on NixOS")
   elseif os == "" then
     _warn("Could not determine OS; Only Linux, Darwin, and NixOS is supported; It might work though")
   else
     _ok("Running on supported OS: " .. os)
+  end
+
+  if next(utils.load_user_config()) == nil then
+    _warn("No or wrong (check :messages) user configuration provided (this is optional)")
+  else
+    _ok("User configuration found")
   end
 
   for k, v in pairs(programs) do
@@ -72,21 +79,37 @@ M.check = function()
     end
   end
 
-  if not utils.isExecutableAvailable(settings.vimtex_compiler_method) then
-    _warn(string.format(exec_not_found_template, settings.vimtex_compiler_method, "to compile LaTex files"))
+  if not utils.isExecutableAvailable(tex.vimtex_compiler_method) then
+    _warn(string.format(exec_not_found_template, tex.vimtex_compiler_method, "to compile LaTex files"))
   else
-    _ok(string.format(exec_found_template, settings.vimtex_compiler_method))
+    _ok(string.format(exec_found_template, tex.vimtex_compiler_method))
   end
 
-  if not utils.isExecutableAvailable(settings.vimtex_view_method) then
-    _warn(string.format(exec_not_found_template, settings.vimtex_view_method, "to view compiled LaTex files (PDFs)"))
+  if not utils.isExecutableAvailable(tex.vimtex_view_method) then
+    _warn(string.format(exec_not_found_template, tex.vimtex_view_method, "to view compiled LaTex files (PDFs)"))
   else
-    _ok(string.format(exec_found_template, settings.vimtex_view_method))
+    _ok(string.format(exec_found_template, tex.vimtex_view_method))
   end
 
   if not utils.isExecutableAvailable("python") then
     if not utils.isExecutableAvailable("python3") then
       _warn("Python was not found - some Python related features might not work")
+    end
+  end
+
+  if plugins.spectre.enable then
+    if os == "Darwin" then
+      if not utils.isExecutableAvailable("gsed") then
+        _warn("gsed was not found - nvim-spectre (search and replace) might not work")
+      else
+        _ok(string.format(exec_found_template, "gsed"))
+      end
+    else
+      if not utils.isExecutableAvailable("sed") then
+        _warn("sed was not found - nvim-spectre (search and replace) might not work")
+      else
+        _ok(string.format(exec_found_template, "sed"))
+      end
     end
   end
 end
