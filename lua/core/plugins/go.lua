@@ -99,7 +99,7 @@ local M = {
         only_current_line_autocmd = "CursorHold",
         -- whether to show variable name before type hints with the inlay hints or not
         -- default: false
-        show_variable_name = true,
+        show_variable_name = false,
         -- prefix for parameter hints
         parameter_hints_prefix = " ",
         show_parameter_hints = true,
