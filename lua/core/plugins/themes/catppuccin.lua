@@ -1,5 +1,4 @@
 local catppuccin = require("catppuccin")
-local settings = require("core.settings")
 
 catppuccin.setup({
   dim_inactive = {
