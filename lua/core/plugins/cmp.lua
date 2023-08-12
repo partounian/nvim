@@ -18,8 +18,8 @@ local M = {
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    "github/copilot.vim",
-    "hrsh7th/cmp-copilot",
+    -- "github/copilot.vim",
+    -- "hrsh7th/cmp-copilot",
     "saadparwaiz1/cmp_luasnip",
   },
   config = function()
