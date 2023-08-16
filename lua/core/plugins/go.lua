@@ -15,7 +15,7 @@ local M = {
       goimport = "gopls", -- goimport command, can be gopls[default] or goimport
       fillstruct = "gopls", -- can be nil (use fillstruct, slower) and gopls
       gofmt = "gofumpt", -- gofmt cmd,
-      max_line_len = 120, -- max line length in goline format
+      max_line_len = 128, -- max line length in goline format
       tag_transform = false, -- tag_transfer  check gomodifytags for details
       test_template = "", -- default to testify if not set; g:go_nvim_tests_template  check gotests for details
       test_template_dir = "", -- default to nil if not set; g:go_nvim_tests_template_dir  check gotests for details
@@ -26,7 +26,7 @@ local M = {
       -- false: do nothing
       -- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
       --   lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
-      lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+      lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
       lsp_diag_underline = false,
       lsp_on_attach = function(client, bufnr)
         -- attach my LSP configs keybindings
@@ -119,7 +119,7 @@ local M = {
       gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile","/var/log/gopls.log" }
       gopls_remote_auto = true, -- add -remote=auto to gopls
       gocoverage_sign = "█",
-      dap_debug = false, -- set to false to disable dap
+      dap_debug = true, -- set to false to disable dap
       dap_debug_keymap = false, -- true: use keymap for debugger defined in go/dap.lua
       -- false: do not use keymap in go/dap.lua.  you must define your own.
       dap_debug_gui = false, -- set to true to enable dap gui, highly recommended
