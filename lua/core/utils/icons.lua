@@ -22,7 +22,6 @@ return {
     Circle = " ",
     Close = " ",
     Code = " ",
-    Copilot = "",
     Comment = " ",
     Dashboard = " ",
     Fire = " ",

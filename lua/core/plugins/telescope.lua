@@ -97,7 +97,7 @@ local M = {
           sort_lastused = true,
         },
         live_grep = {
-          sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts),
+          -- sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts),
           only_sort_text = true, -- grep for content and not file name/path
           mappings = {
             i = { ["<c-f>"] = require("telescope.actions").to_fuzzy_refine },

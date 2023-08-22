@@ -17,10 +17,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>ml", "<cmd>Lazy<cr>")
 
-require("lazy").setup({
-  { "partounian/nvim", import = "core.plugins" },
-  { import = "core.plugins.extras.coding.copilot" },
-}, {
+require("lazy").setup("core.plugins", {
   -- defaults = { lazy = true },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
