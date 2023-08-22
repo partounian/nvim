@@ -72,6 +72,10 @@ return {
       -- disable quick links of the dashboard
       disable_dashboard_quick_links = false,
     },
+    -- https://github.com/zbirenbaum/copilot.lua
+    copilot = {
+      enable = false,
+    },
     git = {
       -- which tool to use for handling git merge conflicts
       -- choose between "git-conflict" and "diffview" or "both"
@@ -85,6 +89,13 @@ return {
       dev = {
         path = "$HOME/workspace/github.com/",
       },
+    },
+    lualine = {
+      -- https://github.com/nvim-lualine/lualine.nvim#extensions
+      extensions = { "lazy" },
+    },
+    ltex = {
+      additional_lang = "de-DE", -- manually set a language in ltex-ls
     },
     noice = {
       enable = true, -- Noice heavily changes the Neovim UI ...
@@ -100,10 +111,8 @@ return {
       fzf_native = {
         enable = false,
       },
-      -- enable greping in hidden files
-      grep_hidden = true,
       -- which patterns to ignore in file switcher
-      telescope_file_ignore_patterns = {
+      file_ignore_patterns = {
         "%.7z",
         "%.JPEG",
         "%.JPG",
@@ -155,6 +164,8 @@ return {
         "target/",
         "vendor/*",
       },
+      -- enable greping in hidden files
+      grep_hidden = true,
     },
     tex = {
       vimtex_compiler_method = "tectonic", -- Tool to compile LaTex files

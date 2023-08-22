@@ -1,5 +1,5 @@
 local opts = {
-  language = "de-DE",
+  checkFrequency = "save",
 }
 
 return opts

@@ -1,8 +1,6 @@
 local M = {
   "s1n7ax/nvim-window-picker",
   opts = {
-    autoselect_one = true,
-    include_current = false,
     filter_rules = {
       -- filter using buffer options
       bo = {
@@ -22,7 +20,6 @@ local M = {
         buftype = { "nofile", "help", "terminal" },
       },
     },
-    other_win_hl_color = "#f05a40",
   },
 }
 

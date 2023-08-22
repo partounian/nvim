@@ -116,38 +116,45 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Outlining symbols with [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
 - Snippets provided by [Luasnip](https://github.com/L3MON4D3/LuaSnip) and [friendly snippets](https://github.com/rafamadriz/friendly-snippets) with autocompletion
 - Schema integration via LSPs for Kubernetes, package.json, GitHub workflows, gitlab-ci.yml, kustomization.yaml, and more
+- GitHub Copilot integration via [copilot.lua](https://github.com/zbirenbaum/copilot.lua) (not enabled by default)
 
 ## Try out
 
-If you have [Docker](https://www.docker.com/) on your system you can try out this config via the provided `Dockerfile`
+If you have [Docker](https://www.docker.com/) on your system you can try out this configuration.
 
 💡 Due to installing required tools like LSPs, CLI apps, etc. the image is approximately 3 GB large
 
+### Dockerhub
+
+There is a GitHub action in place that builds and pushes the Docker image to Dockerhub as `allaman/nvim`
+
+#### Just start Neovim in container
+
+```sh
+docker run --name nvim --rm -it allaman/nvim
+```
+
+#### Mount a local directory (to ~/mount) and start Neovim
+
+```sh
+docker run --name nvim --rm -it -v ${HOME}/tmp:/home/nvim/mount allaman/nvim
+```
+
+#### Start container in bash instead of Neovim
+
+```sh
+docker run --name nvim --rm -it --entrypoint=/bin/bash allaman/nvim
+```
+
 ### Build the image
 
-There are some issues with building a multi architecture Docker image via GitHub Action. Until I sorted that out, you can build the Docker image locally on your own
+You can also build the image on your own
 
 ```sh
 docker build -t nvim .
 ```
 
-### Just start nvim
-
-```sh
-docker run --name nvim --rm -it nvim
-```
-
-### Mount a local directory (to ~/mount) and start nvim
-
-```sh
-docker run --name nvim --rm -it -v ${HOME}/tmp:/home/nvim/mount nvim
-```
-
-### Start container in bash instead of nvim
-
-```sh
-docker run --name nvim --rm -it --entrypoint=/bin/bash nvim
-```
+Replace `allaman/nvim` in the former commands with just `nvim`.
 
 ## Installation
 
@@ -160,6 +167,8 @@ USE AT YOUR OWN RISK!!
 ## Requirements
 
 There are some tools that are required in order to use some features/plugins:
+
+Run `:checkhealth core` to check the status.
 
 ### Tools
 
@@ -196,32 +205,34 @@ All other dependencies are managed by [Mason](https://github.com/williamboman/ma
 
 ## Bindings
 
-| Mode    | key                    | binding                                                |
-| ------- | ---------------------- | ------------------------------------------------------ |
-| n       | space                  | Leader key                                             |
-| n       | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)             |
-| n       | \<leader\>Tab          | Switch to previously opened buffer                     |
-| n       | \<Tab\>                | Switch to next buffer (bnext)                          |
-| n       | \<S-Tab\>              | Switch to previous buffer (bprevious)                  |
-| n       | st                     | Visual selection with Treesitter hint textobject       |
-| v       | sa                     | Add surrounding                                        |
-| n       | sd                     | Delete surrounding                                     |
-| n       | sr                     | Replace surrounding                                    |
-| n       | \<c-Tab\>              | Start auto completion (without typing anything)        |
-| n/v     | ga                     | Start mini.align (align text)                          |
-| n       | gcc                    | Toggle line comment                                    |
-| n/v     | gc                     | Toggle line comment (works with movements like `gcip`) |
-| n       | s                      | Jump to character(s) (flash.nvim)                      |
-| i/s     | \<c-j\>                | Luasnip expand/forward                                 |
-| i/s     | \<c-k\>                | Luasnip backward                                       |
-| i       | \<c-h\>                | Luasnip select choice                                  |
-| n       | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)     |
-| i       | \<c-l\>                | Move out of closing brackets                           |
-| n       | \<CR\>                 | Start incremental selection                            |
-| v       | \<Tab\>                | Increment selection                                    |
-| v       | \<S-Tab\>              | Decrement selection                                    |
-| n       | \<c-f\>                | Search buffer                                          |
-| i/v/n/s | \<c-s\>                | Save file                                              |
+| Mode    | key                    | binding                                                          |
+| ------- | ---------------------- | ---------------------------------------------------------------- |
+| n       | space                  | Leader key                                                       |
+| n       | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)                       |
+| n       | \<leader\>Tab          | Switch to previously opened buffer                               |
+| n       | \<Tab\>                | Switch to next buffer (bnext)                                    |
+| n       | \<S-Tab\>              | Switch to previous buffer (bprevious)                            |
+| n       | st                     | Visual selection with Treesitter hint textobject                 |
+| v       | sa                     | Add surrounding                                                  |
+| n       | sd                     | Delete surrounding                                               |
+| n       | sr                     | Replace surrounding                                              |
+| n       | \<c-Tab\>              | Start auto completion (without typing anything)                  |
+| n/v     | ga                     | Start mini.align (align text)                                    |
+| n       | gcc                    | Toggle line comment                                              |
+| n/v     | gc                     | Toggle line comment (works with movements like `gcip`)           |
+| n       | ss                     | Jump to character(s) (flash.nvim)                                |
+| i/s     | \<c-j\>                | Luasnip expand/forward                                           |
+| i/s     | \<c-k\>                | Luasnip backward                                                 |
+| i       | \<c-h\>                | Luasnip select choice                                            |
+| n       | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)               |
+| i       | \<c-l\>                | Move out of closing brackets                                     |
+| n       | \<CR\>                 | Start incremental selection                                      |
+| v       | \<Tab\>                | Increment selection                                              |
+| v       | \<S-Tab\>              | Decrement selection                                              |
+| n       | \<c-f\>                | Search buffer                                                    |
+| i/v/n/s | \<c-s\>                | Save file                                                        |
+| n       | :LtexLang <lang>       | Set a specific language like "de-DE" for ltex-ls                 |
+| n       | \<leader\>mc           | Enable GitHub Copilot (if plugin is enabled in your user config) |
 
 Hit `<leader>` to start `which-key` which gives you more mappings grouped by topic.
 
@@ -259,9 +270,9 @@ Each plugin to be installed is defined in `./lua/core/plugins/` in a separate fi
 
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-The default configuration can be found in `./lua/core/config/defaults.lua` which is just one rather large table. You can overwrite any of this configuration by writing a `./config.lua` file following the same structure as `defaults.lua` and pick only those keys that you want to modify.
+The default configuration can be found in `./lua/core/config/defaults.lua` which is just one rather large table. You can overwrite any of this configuration by writing a `.nvim_config.lua` file that follows the same structure as `defaults.lua` and pick only those keys that you want to modify. The configuration file should be placed in `$XDG_CONFIG_HOME`, `$HOME`, or the windows equivalent path.
 
-You can start with `cp ./config-example.lua config.lua`.
+You can start with `cp ./config-example.lua $HOME/.nvim_config.lua`.
 
 ## Remove plugins
 
