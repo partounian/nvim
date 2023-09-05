@@ -38,6 +38,6 @@ return {
       panel = { enabled = false },
     })
     -- HACK I want Copilot to only be enabled when I ask for it
-    vim.cmd([[Copilot disable]])
+    -- vim.cmd([[Copilot disable]])
   end,
 }
