@@ -75,6 +75,7 @@ return {
     -- https://github.com/zbirenbaum/copilot.lua
     copilot = {
       enable = false,
+      disable_autostart = false,
     },
     git = {
       -- which tool to use for handling git merge conflicts
@@ -88,6 +89,16 @@ return {
     lazy = {
       dev = {
         path = "$HOME/workspace/github.com/",
+      },
+      disable_neovim_plugins = {
+        -- "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        -- "tarPlugin",
+        -- "tohtml",
+        -- "tutor",
+        -- "zipPlugin",
       },
     },
     lualine = {
@@ -114,6 +125,7 @@ return {
       -- which patterns to ignore in file switcher
       file_ignore_patterns = {
         "%.7z",
+        "%.avi",
         "%.JPEG",
         "%.JPG",
         "%.V",
