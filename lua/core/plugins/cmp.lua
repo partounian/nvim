@@ -96,7 +96,7 @@ local M = {
         }),
         -- TODO only when copilot is enabled
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() and has_words_before() then
+          if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           else
             fallback()

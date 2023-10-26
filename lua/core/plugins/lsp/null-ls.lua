@@ -46,6 +46,14 @@ nls.setup({
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
     nls.builtins.diagnostics.ruff,
+    -- https://github.com/ray-x/go.nvim#integrate-null-ls
+    nls.builtins.diagnostics.revive,
+    nls.builtins.formatting.golines.with({
+      extra_args = {
+        "--max-len=180",
+        "--base-formatter=gofumpt",
+      },
+    }),
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(
