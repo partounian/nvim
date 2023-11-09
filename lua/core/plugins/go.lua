@@ -79,19 +79,19 @@ local M = {
       -- if lsp_on_attach is a function: use this function as on_attach function for gopls
       -- lsp_codelens = true, -- set to false to disable codelens, true by default
       lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
-      -- diagnostic = {
-      --   underline = false,
-      --   hdlr = true, -- hook lsp diag handler
-      --   virtual_text = { space = 0, prefix = icons.arrows.Diamond }, -- virtual text setup
-      --   signs = true,
-      -- },
+      diagnostic = {
+        -- hdlr = true, -- hook lsp diag handler and send error to quickfix
+        underline = false,
+        -- virtual_text = { space = 0, prefix = icons.arrows.Diamond }, -- virtual text setup
+        -- signs = true,
+      },
       -- lsp_diag_update_in_insert = true,
       lsp_document_formatting = false,
       -- set to true: use gopls to format
       -- false if you want to use other formatter tool(e.g. efm, nulls)
-      lsp_inlay_hints = {
-        enable = false,
-      },
+      -- lsp_inlay_hints = {
+      --   enable = false,
+      -- },
       -- gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile","/var/log/gopls.log" }
       -- gopls_remote_auto = true, -- add -remote=auto to gopls
       -- gocoverage_sign = "█",
