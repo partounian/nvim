@@ -9,7 +9,6 @@ local M = {
     "mfussenegger/nvim-ts-hint-textobject",
     "windwp/nvim-ts-autotag",
     "nvim-treesitter/playground",
-    "nvim-treesitter/nvim-treesitter-context",
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
   config = function()
@@ -56,24 +55,21 @@ local M = {
           },
         },
       },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-        config = {
-          sql = "-- %s",
-          tpl = "// %s",
-        },
-      },
+      -- context_commentstring = {
+      --   enable = true,
+      --   enable_autocmd = false,
+      --   config = {
+      --     sql = "-- %s",
+      --     tpl = "// %s",
+      --   },
+      -- },
+    })
+
+    require("ts_context_commentstring").setup({
+      enable_autocmd = false,
     })
 
     require("nvim-ts-autotag").setup()
-
-    -- TODO: remove since we dropbar effectively replaces this, even though it doesn't tell us the if condition we're in, but tells us down to the struct/interface def or func def we're in
-    require("treesitter-context").setup({
-      enable = false, -- Enable this plugin (Can be enabled/disabled later via commands)
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-      trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    })
   end,
 }
 
