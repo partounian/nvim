@@ -12,15 +12,15 @@ local M = {
       },
       patterns = {
         ".git",
-        -- "package.json",
+        "package.json",
         ".terraform",
         "go.mod",
         "requirements.yml",
         "pyrightconfig.json",
         "pyproject.toml",
       },
-      -- detection_methods = { "lsp", "pattern" },
-      detection_methods = { "pattern" },
+      detection_methods = { "lsp", "pattern" },
+      -- detection_methods = { "pattern" },
     })
   end,
 }
