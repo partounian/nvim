@@ -55,7 +55,7 @@ local M = {
           },
         },
       },
-      -- context_commentstring = {
+      -- context_commentstring = { -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#getting-started
       --   enable = true,
       --   enable_autocmd = false,
       --   config = {
@@ -65,6 +65,7 @@ local M = {
       -- },
     })
 
+    vim.g.skip_ts_context_commentstring_module = true -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#getting-started
     require("ts_context_commentstring").setup({
       enable_autocmd = false,
     })
