@@ -89,6 +89,34 @@ return {
       -- choose between "git-conflict" and "diffview" or "both"
       merge_conflict_tool = "git-conflict",
     },
+    gopher = {
+      -- https://github.com/olexsmir/gopher.nvim
+      enable = false,
+    },
+    harpoon = {
+      -- https://github.com/ThePrimeagen/harpoon
+      enable = false,
+      key_mappings = function(harpoon)
+        vim.keymap.set("n", "<leader>a", function()
+          harpoon:list():append()
+        end, { desc = "Append to harpoon" })
+        vim.keymap.set("n", "<C-e>", function()
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end)
+        vim.keymap.set("n", "<leader>1", function()
+          harpoon:list():select(1)
+        end, { desc = "Harpoon 2" })
+        vim.keymap.set("n", "<leader>2", function()
+          harpoon:list():select(2)
+        end, { desc = "Harpoon 2" })
+        vim.keymap.set("n", "<leader>3", function()
+          harpoon:list():select(3)
+        end, { desc = "Harpoon 3" })
+        vim.keymap.set("n", "<leader>4", function()
+          harpoon:list():select(4)
+        end, { desc = "Harpoon 4" })
+      end,
+    },
     indent_blankline = {
       enable_scope = true,
     },
@@ -133,6 +161,21 @@ return {
     },
     noice = {
       enable = true, -- Noice heavily changes the Neovim UI ...
+    },
+    oil = {
+      --- https://github.com/stevearc/oil.nvim
+      enable = false,
+      key_mappings = function()
+        vim.keymap.set("n", "_", "<cmd>Oil<cr>", { desc = "Open oil" })
+      end,
+    },
+    overseer = {
+      -- https://github.com/stevearc/overseer.nvim
+      enable = false,
+      key_mappings = function()
+        vim.keymap.set("n", "<leader>r", "<cmd>OverseerRun<cr>", { desc = "Overseer Run" })
+        vim.keymap.set("n", "<leader>tr", "<cmd>OverseerToggle<cr>", { desc = "Overseer" })
+      end,
     },
     spectre = {
       -- enable advanced search and replace
@@ -190,7 +233,6 @@ return {
         ".git/",
         ".gradle/",
         ".idea/",
-        ".settings/",
         ".vale/",
         ".vscode/",
         "__pycache__/*",
@@ -263,7 +305,6 @@ return {
     "bashls",
     "dockerls",
     "jsonls",
-    -- TODO managed by go.nvim
     "gopls",
     "ltex",
     "marksman",
@@ -293,5 +334,13 @@ return {
     -- DAP
     "debugpy",
     "codelldb",
+    -- Go
+    "gofumpt",
+    "goimports",
+    "gomodifytags",
+    "gotests",
+    "iferr",
+    "impl",
+    "staticcheck",
   },
 }

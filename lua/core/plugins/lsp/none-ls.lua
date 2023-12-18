@@ -42,6 +42,10 @@ nls.setup({
     --     return u.root_pattern("tailwind.config.js")(params.bufname)
     --   end),
     -- }),
+    nls.builtins.diagnostics.staticcheck,
+    -- nls.builtins.formatting.latexindent.with({
+    --   extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
+    -- }),
     nls.builtins.code_actions.shellcheck,
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
