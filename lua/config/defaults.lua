@@ -99,10 +99,10 @@ return {
       key_mappings = function(harpoon)
         vim.keymap.set("n", "<leader>a", function()
           harpoon:list():append()
-        end, { desc = "Append to harpoon" })
-        vim.keymap.set("n", "<C-e>", function()
+        end, { desc = "Harpoon append" })
+        vim.keymap.set("n", "<leader>0", function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
-        end)
+        end, { desc = "Harpoon UI" })
         vim.keymap.set("n", "<leader>1", function()
           harpoon:list():select(1)
         end, { desc = "Harpoon 2" })
@@ -250,6 +250,10 @@ return {
     tex = {
       vimtex_compiler_method = "tectonic", -- Tool to compile LaTex files
       vimtex_view_method = "skim", -- Tool to view PDFs generated from LaTex
+    },
+    trouble = {
+      enable = false,
+      opts = {},
     },
   },
 

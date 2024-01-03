@@ -1,10 +1,6 @@
 local utils = require("utils.functions")
 local map = vim.keymap.set
 
-local mapping = {
-  { "n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true } },
-}
-
 -- Remap for dealing with visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -72,7 +68,7 @@ map("n", "<leader>tc", function()
   utils.notify("Toggling cursorline", vim.log.levels.INFO, "core.mappings")
   vim.o.cursorline = vim.o.cursorline == false and true or false
 end, { desc = "Toggle cursorline" })
-map("n", "<leader>to", "<cmd>lua require('utils.functions').toggle_colorcolumn()<cr>", { desc = "Toggle colorcolumn" })
+map("n", "<leader>tO", "<cmd>lua require('utils.functions').toggle_colorcolumn()<cr>", { desc = "Toggle colorcolumn" })
 map(
   "n",
   "<leader>tt",
