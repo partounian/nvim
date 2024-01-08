@@ -50,8 +50,9 @@ nls.setup({
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
     nls.builtins.diagnostics.ruff,
-    -- https://github.com/ray-x/go.nvim#integrate-null-ls
-    nls.builtins.diagnostics.revive,
+    -- nls.builtins.diagnostics.revive,
+    -- golangci_lint might be making nvim slow
+    nls.builtins.diagnostics.golangci_lint,
     nls.builtins.formatting.golines.with({
       extra_args = {
         "--max-len=180",
