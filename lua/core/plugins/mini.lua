@@ -73,7 +73,7 @@ return {
 
   {
     "echasnovski/mini.files",
-    event = { "VimEnter" },
+    kyes = "-",
     opts = {
       windows = {
         -- Whether to show preview of directory under cursor
@@ -112,16 +112,5 @@ return {
         desc = "Open Mini Files",
       },
     },
-  },
-
-  {
-    "echasnovski/mini.pick",
-    event = { "VimEnter" },
-    opts = {
-      mappings = plugins.mini_pick.mappings,
-    },
-    config = function(_, opts)
-      require("mini.pick").setup(opts)
-    end,
   },
 }

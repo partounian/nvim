@@ -146,18 +146,20 @@ return {
         -- "zipPlugin",
       },
     },
+    lf = {
+      -- https://github.com/lmburns/lf.nvim
+      enable = false,
+      replace_ntrw = 0,
+      key_mappings = function()
+        vim.keymap.set("n", "<leader>lf", "<cmd>lua require('lf').start()<cr>", { desc = "LF" })
+      end,
+    },
     lualine = {
       -- https://github.com/nvim-lualine/lualine.nvim#extensions
       extensions = { "lazy" },
     },
     ltex = {
       additional_lang = "de-DE", -- manually set a language in ltex-ls
-    },
-    mini_pick = {
-      mappings = {
-        move_down = "<C-j>",
-        move_up = "<C-k>",
-      },
     },
     noice = {
       enable = true, -- Noice heavily changes the Neovim UI ...
@@ -172,10 +174,6 @@ return {
     overseer = {
       -- https://github.com/stevearc/overseer.nvim
       enable = false,
-      key_mappings = function()
-        vim.keymap.set("n", "<leader>r", "<cmd>OverseerRun<cr>", { desc = "Overseer Run" })
-        vim.keymap.set("n", "<leader>tr", "<cmd>OverseerToggle<cr>", { desc = "Overseer" })
-      end,
     },
     spectre = {
       -- enable advanced search and replace
@@ -191,6 +189,7 @@ return {
       fzf_native = {
         enable = false,
       },
+      show_untracked_files = false,
       -- which patterns to ignore in file switcher
       file_ignore_patterns = {
         "%.7z",
@@ -346,6 +345,5 @@ return {
     "gotests",
     "iferr",
     "impl",
-    "staticcheck",
   },
 }
