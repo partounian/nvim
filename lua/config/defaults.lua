@@ -79,10 +79,18 @@ return {
       -- disable quick links of the dashboard
       disable_dashboard_quick_links = false,
     },
+    -- https://github.com/jackMort/ChatGPT.nvim
+    chatgpt = {
+      enable = false,
+      opts = {},
+    },
     -- https://github.com/zbirenbaum/copilot.lua
     copilot = {
       enable = false,
       disable_autostart = false,
+    },
+    lsp = {
+      log = "off",
     },
     git = {
       -- which tool to use for handling git merge conflicts
@@ -118,6 +126,7 @@ return {
       end,
     },
     indent_blankline = {
+      enable = false,
       enable_scope = true,
     },
     -- https://github.com/Allaman/kustomize.nvim
@@ -253,6 +262,10 @@ return {
     trouble = {
       enable = false,
       opts = {},
+    },
+    -- https://github.com/folke/zen-mode.nvim
+    zenmode = {
+      enable = false,
     },
   },
 

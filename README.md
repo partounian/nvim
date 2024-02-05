@@ -92,6 +92,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Better writing with [ltex-ls](https://valentjn.github.io/ltex/index.html)
 - Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
 - Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), [nightfox](https://github.com/EdenEast/nightfox.nvim), and more
+- AI assistance with [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim) (optionally)
 - Health check via `checkhealth core`
 - Lazy loading plugins (25 of 92 in my case)
 - Startup <= 70ms 🚀
@@ -292,7 +293,11 @@ Each plugin to be installed is defined in `./lua/core/plugins/` in a separate fi
 
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-The default configuration can be found in `./lua/core/config/defaults.lua` which is just one rather large table. You can overwrite any of this configuration by writing a `.nvim_config.lua` file that follows the same structure as `defaults.lua` and pick only those keys that you want to modify. The configuration file should be placed in `$XDG_CONFIG_HOME`, `$HOME`, or the windows equivalent path.
+The default configuration can be found in `./lua/core/config/defaults.lua`.
+
+https://github.com/Allaman/nvim/blob/main/lua/config/defaults.lua#L3-L349
+
+You can overwrite any of this configuration by writing a `.nvim_config.lua` file that follows the same structure as `defaults.lua` and pick only those keys that you want to modify. The configuration file should be placed in `$XDG_CONFIG_HOME`, `$HOME`, or the windows equivalent path.
 
 You can start with `cp ./config-example.lua $HOME/.nvim_config.lua`.
 
