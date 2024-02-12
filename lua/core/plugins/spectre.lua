@@ -23,7 +23,7 @@ return {
       "<leader>Rw",
       mode = "v",
       function()
-        require("spectre").open_visual({ select_word = true })
+        require("spectre").open_visual()
       end,
       desc = "Search current word",
     },
@@ -33,20 +33,6 @@ return {
         require("spectre").open_file_search({ select_word = true })
       end,
       desc = "Search in current file",
-    },
-    {
-      "<leader>Rc",
-      function()
-        require("spectre.actions").run_current_replace()
-      end,
-      desc = "Replace current",
-    },
-    {
-      "<leader>RR",
-      function()
-        require("spectre.actions").run_replace()
-      end,
-      desc = "Replace all",
     },
   },
 }
