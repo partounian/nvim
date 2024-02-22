@@ -7,7 +7,6 @@ local M = {
     "crispgm/telescope-heading.nvim",
     "nvim-telescope/telescope-symbols.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
-    "ptethng/telescope-makefile",
     { "nvim-telescope/telescope-fzf-native.nvim", enabled = conf.telescope.fzf_native.enable, build = "make" },
   },
   keys = {
@@ -39,7 +38,6 @@ local M = {
     { "<leader>fF", "<cmd>Telescope find_files<cr>", desc = "Open file (ignore git)" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
     -- misc
-    { "<leader>mm", "<cmd>Telescope make<cr>", desc = "Run make" },
     { "<leader>mt", "<cmd>Telescope<cr>", desc = "Telescope" },
     -- Other
     { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Bufferlist" },
@@ -168,7 +166,6 @@ local M = {
     telescope.load_extension("projects")
     telescope.load_extension("zoxide")
     telescope.load_extension("heading")
-    telescope.load_extension("make")
     if conf.noice.enable then
       telescope.load_extension("noice")
     end
