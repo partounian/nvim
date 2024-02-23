@@ -51,13 +51,13 @@ nls.setup({
     nls.builtins.diagnostics.ruff,
     -- nls.builtins.diagnostics.revive,
     -- golangci_lint might be making nvim slow
-    nls.builtins.diagnostics.golangci_lint,
-    nls.builtins.formatting.golines.with({
-      extra_args = {
-        "--max-len=180",
-        "--base-formatter=gofumpt",
-      },
-    }),
+    -- nls.builtins.diagnostics.golangci_lint,
+    -- nls.builtins.formatting.golines.with({
+    --   extra_args = {
+    --     "--max-len=180",
+    --     "--base-formatter=gofumpt",
+    --   },
+    -- }),
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(
