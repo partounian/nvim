@@ -85,7 +85,6 @@ catppuccin.setup({
     symbols_outline = true,
     mini = true,
     fidget = false,
-    ufo = true,
   },
 })
 vim.cmd("colorscheme " .. vim.g.config.theme.catppuccin.variant)
