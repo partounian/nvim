@@ -25,10 +25,10 @@ else
   lsp_key_mapping["document_diagnostics"] = "<cr>Telescope diagnostics bufnr=0<cr>"
   lsp_key_mapping["lsp_references"] = "<cmd>Telescope lsp_references<cr>"
   lsp_key_mapping["lsp_definitions"] = function()
-    require("telescope.builtin").lsp_definitions({ reuse_win = true })
+    require("telescope.builtin").lsp_definitions({ reuse_win = false })
   end
   lsp_key_mapping["lsp_type_definitions"] = function()
-    require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+    require("telescope.builtin").lsp_type_definitions({ reuse_win = false })
   end
 end
 
@@ -52,7 +52,7 @@ M._keys = {
   {
     "<leader>lI",
     function()
-      require("telescope.builtin").lsp_implementations({ reuse_win = true })
+      require("telescope.builtin").lsp_implementations({ reuse_win = false })
     end,
     desc = "Goto Implementation",
   },
