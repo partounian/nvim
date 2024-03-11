@@ -92,8 +92,8 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), [nightfox](https://github.com/EdenEast/nightfox.nvim), and more
 - AI assistance with [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim) (optionally)
 - Health check via `checkhealth core`
-- Lazy loading plugins (25 of 92 in my case)
-- Startup <= 70ms 🚀
+- Lazy loading plugins (16 of 95 in my case)
+- Startup <= 55 ms 🚀
 
 ### Navigation 🧭
 
@@ -111,7 +111,8 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Built-in LSP configured via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [mason](https://github.com/williamboman/mason.nvim), and [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
 - Debugging for Go and Python via [nvim-dap](https://github.com/mfussenegger/nvim-dap) and friends
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and [Tresitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) for your syntax needs
-- Auto formatting via [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- Auto formatting via [conform.nvim](https://github.com/stevearc/conform.nvim)
+- Linting via [nvim-lint](https://github.com/mfussenegger/nvim-lint)
 - Excellent Go support via LSP including sensible keybindings
 - Always know where you are in your code via [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 - Git integration via [Neogit](https://github.com/TimUntersberger/neogit) and [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
@@ -207,43 +208,45 @@ All other dependencies are managed by [Mason](https://github.com/williamboman/ma
 
 Some bindings can be overwritten in your user config file. See `./lua/core/config/defaults.lua` for possible settings.
 
-| Mode    | key                    | binding                                                                 |
-| ------- | ---------------------- | ----------------------------------------------------------------------- |
-| n       | space                  | Leader key                                                              |
-| n       | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)                              |
-| n       | \<leader\>Tab          | Switch to previously opened buffer                                      |
-| n       | \<Tab\>                | Switch to next buffer (bnext)                                           |
-| n       | \<S-Tab\>              | Switch to previous buffer (bprevious)                                   |
-| n       | st                     | Visual selection with Treesitter hint textobject                        |
-| v       | sa                     | Add surrounding                                                         |
-| n       | sd                     | Delete surrounding                                                      |
-| n       | sr                     | Replace surrounding                                                     |
-| n       | \<c-Tab\>              | Start auto completion                                                   |
-| n/v     | ga                     | Start mini.align (align text)                                           |
-| n       | gcc                    | Toggle line comment                                                     |
-| n/v     | gc                     | Toggle line comment (works with movements like `gcip`)                  |
-| n       | ss                     | Jump to character(s) (flash.nvim)                                       |
-| i/s     | \<c-j\>                | Luasnip expand/forward                                                  |
-| i/s     | \<c-k\>                | Luasnip backward                                                        |
-| i       | \<c-h\>                | Luasnip select choice                                                   |
-| n       | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)                      |
-| i       | \<c-l\>                | Move out of closing brackets                                            |
-| n       | \<CR\>                 | Start incremental selection                                             |
-| v       | \<Tab\>                | Increment selection                                                     |
-| v       | \<S-Tab\>              | Decrement selection                                                     |
-| n       | \<c-f\>                | Search buffer                                                           |
-| i/v/n/s | \<c-s\>                | Save file                                                               |
-| n       | \<leader\>Rr           | Toggle Search and Replace (via Spectre)                                 |
-| n       | \<leader\>Rw           | Search (and replace) current word (via Spectre)                         |
-| n       | \<leader\>Rf           | Search (and replace) in current file (via Spectre)                      |
-| n       | \<leader\>Rc           | Replace current selection (in Spectre)                                  |
-| n       | \<leader\>RR           | Replace all (in Spectre)                                                |
-| n       | :LtexLang <lang>       | Set a specific language like "de-DE" for ltex-ls                        |
-| n       | \<leader\>mc           | Enable GitHub Copilot (if plugin is enabled in your user config)        |
-| n       | \<leader\>tr           | Toggle Overseer (if plugin is enabled in your user config)              |
-| n       | \<leader\>r            | OverseerRun (if plugin is enabled in your user config)                  |
-| n       | \<leader\>lf           | lf.nvim (if plugin is enabled in your user config)                      |
-| n       | \<leader\>tz           | Toggle distraction free mode (if plugin is enabled in your user config) |
+| Mode    | key                    | binding                                                                  |
+| ------- | ---------------------- | ------------------------------------------------------------------------ |
+| n       | space                  | Leader key                                                               |
+| n       | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)                               |
+| n       | \<leader\>Tab          | Switch to previously opened buffer                                       |
+| n       | \<Tab\>                | Switch to next buffer (bnext)                                            |
+| n       | \<S-Tab\>              | Switch to previous buffer (bprevious)                                    |
+| n       | st                     | Visual selection with Treesitter hint textobject                         |
+| v       | sa                     | Add surrounding                                                          |
+| n       | sd                     | Delete surrounding                                                       |
+| n       | sr                     | Replace surrounding                                                      |
+| n       | \<c-Tab\>              | Start auto completion                                                    |
+| n/v     | ga                     | Start mini.align (align text)                                            |
+| n       | gcc                    | Toggle line comment                                                      |
+| n/v     | gc                     | Toggle line comment (works with movements like `gcip`)                   |
+| n       | ss                     | Jump to character(s) (flash.nvim)                                        |
+| i/s     | \<c-j\>                | Luasnip expand/forward                                                   |
+| i/s     | \<c-k\>                | Luasnip backward                                                         |
+| i       | \<c-h\>                | Luasnip select choice                                                    |
+| n       | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)                       |
+| i       | \<c-l\>                | Move out of closing brackets                                             |
+| n       | \<CR\>                 | Start incremental selection                                              |
+| v       | \<Tab\>                | Increment selection                                                      |
+| v       | \<S-Tab\>              | Decrement selection                                                      |
+| n       | \<c-f\>                | Search buffer                                                            |
+| i/v/n/s | \<c-s\>                | Save file                                                                |
+| n       | \<leader\>Rr           | Toggle Search and Replace (via Spectre)                                  |
+| n       | \<leader\>Rw           | Search (and replace) current word (via Spectre)                          |
+| n       | \<leader\>Rf           | Search (and replace) in current file (via Spectre)                       |
+| n       | \<leader\>Rc           | Replace current selection (in Spectre)                                   |
+| n       | \<leader\>RR           | Replace all (in Spectre)                                                 |
+| n       | :LtexLang <lang>       | Set a specific language like "de-DE" for ltex-ls                         |
+| n       | \<leader\>mc           | Enable GitHub Copilot (if plugin is enabled in your user config)         |
+| n       | \<leader\>tr           | Toggle Overseer (if plugin is enabled in your user config)               |
+| n       | \<leader\>r            | OverseerRun (if plugin is enabled in your user config)                   |
+| n       | \<leader\>lf           | lf.nvim (if plugin is enabled in your user config)                       |
+| n       | \<leader\>tz           | Toggle distraction free mode (if plugin is enabled in your user config)  |
+| n       | \<leader\>tF           | Disable auto formatting (if conform.nvim is enabled in your user config) |
+| n       | \<leader\>tL           | Disable linting (if nvim-lint is enabled in your user config)            |
 
 Hit `<leader>` to start `which-key` which gives you more mappings grouped by topic.
 
@@ -273,7 +276,7 @@ lua
 ❯ tree -L 1 lua/config
 lua/config
 ├── autocmds.lua # autocmds
-├── defaults.lua # default configuration
+├── defaults/    # default configuration
 ├── init.lua     # entry point
 ├── lazy.lua     # plugin management
 └── mappings.lua # "global" key mappings
@@ -292,17 +295,17 @@ Each plugin to be installed is defined in `./lua/core/plugins/` in a separate fi
 
 The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-The default configuration can be found in [./lua/core/config/defaults.lua](./lua/core/config/defaults.lua).
+The default configuration can be found in [./lua/config/defaults](./lua/config/defaults/).
 
-You can overwrite any of this configuration by writing a `.nvim_config.lua` file that follows the same structure as `defaults.lua` and pick only those keys that you want to modify. Have a look at my user configuration in my [dots repo](https://github.com/Allaman/dots/blob/main/dot_nvim_config.lua.tmpl). The configuration file should be placed in `$XDG_CONFIG_HOME`, `$HOME`, or the windows equivalent path.
+You can overwrite any of this configuration by writing a `.nvim_config.lua` file that follows the same structure as the default table and pick only those keys that you want to modify. Have a look at my user configuration in my [dots repo](https://github.com/Allaman/dots/blob/main/dot_nvim_config.lua.tmpl). The configuration file should be placed in `$XDG_CONFIG_HOME`, `$HOME`, or the windows equivalent path.
 
 You can start with `cp ./config-example.lua $HOME/.nvim_config.lua`.
 
 ## Remove plugins
 
-You can remove unwanted plugins by just removing the appropriate file in `./lua/core/plugins/`. Lazy will take care of removing the plugin.
+You can remove unwanted plugins by just removing the appropriate file in `./lua/core/plugins/`. Lazy will take care of removing the plugin. You should also clean up any default configurations in [./lua/config/defaults](./lua/config/defaults/).
 
-**Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/vim/config/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.**
+**Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/core/plugins/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.**
 
 ## Add plugins
 
