@@ -201,7 +201,7 @@ The following programs should be installed on your system so that the appropriat
 
 #### All other
 
-All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim). Tools are installed by running `:MasonToolsInstall` (in `vim.fn.std path("data") .. "mason"`). [Mason requirements](https://GitHub.com/William beman/mason.nvim#requirements) must be available on your system.
+All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim). Tools are installed automatically using Mason & mason-lspconfig (in `vim.fn.std path("data") .. "mason"`). [Mason requirements](https://GitHub.com/William beman/mason.nvim#requirements) must be available on your system.
 
 ## Bindings
 
