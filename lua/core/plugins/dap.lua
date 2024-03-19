@@ -5,6 +5,7 @@ local M = {
     dependencies = {
       "mfussenegger/nvim-dap-python",
       "leoluz/nvim-dap-go",
+      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
     },
