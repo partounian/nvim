@@ -6,6 +6,7 @@ return {
     "dockerls",
     "jsonls",
     "gopls",
+    "helm_ls",
     "ltex",
     "marksman",
     "pyright",
@@ -34,6 +35,7 @@ return {
     "ruff",
     -- DAP
     "debugpy",
+    "delve",
     "codelldb",
     -- Go
     "gofumpt",

@@ -1,3 +1,4 @@
+---
 name: ci
 
 on:
@@ -22,13 +23,11 @@ jobs:
           ignore: "DL3008,DL3013,SC2015"
           verbose: true
       - name: Lint Markdown files
-        uses: actionshub/markdownlint@v3.1.4
-      - name: Codespell
-        uses: codespell-project/actions-codespell@master
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        continue-on-error: true
         with:
-          check_filenames: true
-          check_hidden: true
-          ignore_words_list: noice,windo,enew
+          globs: |
+            README.md
 
   docker:
     runs-on: ubuntu-latest

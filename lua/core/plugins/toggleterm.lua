@@ -17,6 +17,7 @@ local M = {
       open_mapping = "<C-n>",
       shading_factor = "1", -- the percentage by which to lighten terminal background, default: -30 (gets multiplied by -3 if background is light)
       direction = "vertical", -- 'vertical' | 'horizontal' | 'window' | 'float',
+      autochdir = true,
     })
 
     local opts = { noremap = true }
@@ -39,6 +40,14 @@ local M = {
       end,
       desc = "Mappings for navigation with a terminal",
     })
+
+    vim.api.nvim_create_user_command("Exec", function(opts)
+      require("toggleterm").exec(opts.args)
+    end, { desc = "Run TermExec with the given command", nargs = "*" })
+
+    vim.api.nvim_create_user_command("Tldr", function(opts)
+      require("toggleterm").exec("tldr " .. opts.args)
+    end, { desc = "Run tldr with the given argument", nargs = 1 })
   end,
 }
 

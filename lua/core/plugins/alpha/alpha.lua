@@ -1,5 +1,4 @@
 -- adopted from https://github.com/AdamWhittingham/vim-config/blob/nvim/lua/config/startup_screen.lua
--- use with nvim -u minimal_init_lazy.lua
 local conf = vim.g.config.plugins.alpha
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
@@ -72,43 +71,47 @@ local function file_button(fn, sc, short_fn)
   return file_button_el
 end
 
-local default_mru_ignore = { "gitcommit" }
-
-local mru_opts = {
-  ignore = function(p, ext)
-    return (string.find(p, "COMMIT_EDITMSG")) or (vim.tbl_contains(default_mru_ignore, ext))
-  end,
-}
-
 --- @param start number
 --- @param cwd string optional
 --- @param items_number number optional number of items to generate, default = 10
-local function mru(start, cwd, items_number, opts)
-  opts = opts or mru_opts
+local function get_recent_files(start, cwd, items_number)
   items_number = items_number or 9
 
-  local oldfiles = {}
-  for _, v in pairs(vim.v.oldfiles) do
-    if #oldfiles == items_number then
-      break
+  local recent_files = {}
+  local ok, _ = pcall(require, "mini.visits")
+
+  if not ok then
+    for _, v in pairs(vim.v.oldfiles) do
+      if #recent_files == items_number then
+        break
+      end
+      local cwd_cond
+      if not cwd then
+        cwd_cond = true
+      else
+        cwd_cond = vim.startswith(v, cwd)
+      end
+      if (vim.fn.filereadable(v) == 1) and cwd_cond then
+        recent_files[#recent_files + 1] = v
+      end
     end
-    local cwd_cond
-    if not cwd then
-      cwd_cond = true
-    else
-      cwd_cond = vim.startswith(v, cwd)
+  else
+    -- TODO better approach via config table?
+    local exclude = function(path_data)
+      return vim.fn.matchstr(path_data.path, "gp/chats") == ""
     end
-    local ignore = (opts.ignore and opts.ignore(v, get_extension(v))) or false
-    if (vim.fn.filereadable(v) == 1) and cwd_cond and not ignore then
-      oldfiles[#oldfiles + 1] = v
-    end
+    local sort_recent = require("mini.visits").gen_sort.default({ recency_weight = 1 })
+    recent_files = require("mini.visits").list_paths(nil, { filter = exclude, sort = sort_recent })
   end
 
   local special_shortcuts = { "a", "s", "d" }
   local target_width = 35
 
   local tbl = {}
-  for i, fn in ipairs(oldfiles) do
+  for i, fn in ipairs(recent_files) do
+    if i == items_number then
+      break
+    end
     local short_fn
     if cwd then
       short_fn = vim.fn.fnamemodify(fn, ":.")
@@ -156,7 +159,7 @@ local section_mru = {
     {
       type = "group",
       val = function()
-        return { mru(1, cdir, conf.dashboard_recent_files) }
+        return { get_recent_files(1, cdir, conf.dashboard_recent_files) }
       end,
       opts = { shrink_margin = false },
     },
@@ -170,7 +173,7 @@ local buttons = {
     dashboard.button("e", "  New File", "<cmd>ene <BAR> startinsert<cr>"),
     dashboard.button("f", "  Find File", ":" .. require("utils.functions").project_files() .. "<cr>"),
     dashboard.button("b", "  File Browser", "<cmd>" .. require("utils.functions").file_browser() .. "<cr>"),
-    dashboard.button("t", "  Find Text", "<cmd>Telescope live_grep<cr>"),
+    dashboard.button("s", "  Search String", "<cmd>Telescope live_grep<cr>"),
     dashboard.button("r", "  Recent Files", "<cmd>Telescope oldfiles<cr>"),
     dashboard.button("g", "  NeoGit", "<cmd>Neogit<cr>"),
     dashboard.button("l", "  Lazy", "<cmd>Lazy check<cr>"),

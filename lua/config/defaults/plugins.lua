@@ -8,6 +8,8 @@ return {
       disable_dashboard_header = false,
       -- disable quick links of the dashboard
       disable_dashboard_quick_links = false,
+      -- use mini.visits as recent files provider
+      use_mini_visits = false,
     },
     -- https://github.com/jackMort/ChatGPT.nvim
     chatgpt = {
@@ -30,6 +32,10 @@ return {
       -- which tool to use for handling git merge conflicts
       -- choose between "git-conflict" and "diffview" or "both"
       merge_conflict_tool = "git-conflict",
+    },
+    gp = {
+      -- https://github.com/Robitx/gp.nvim
+      enabled = false,
     },
     gopher = {
       -- https://github.com/olexsmir/gopher.nvim
