@@ -82,10 +82,10 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 - Better writing with [ltex-ls](https://valentjn.github.io/ltex/index.html)
 - Dashboard via [alpha.nvim](https://github.com/goolord/alpha-nvim) with recent files and quick links
 - Multiple preconfigured themes like [catppuccin](https://github.com/catppuccin/nvim), [tokyonight](https://github.com/folke/tokyonight.nvim), [nightfox](https://github.com/EdenEast/nightfox.nvim), and more
-- AI assistance with [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim) (optionally)
+- AI assistance with [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim), [gp.nvim](https://github.com/Robitx/gp.nvim), and [copilot.lua](https://github.com/zbirenbaum/copilot.lua) (optionally)
 - Health check via `checkhealth core`
-- Lazy loading plugins (16 of 95 in my case)
-- Startup <= 55 ms 🚀
+- Lazy loading plugins (19 of 95 in my case)
+- Startup <= 60 ms 🚀
 
 ### Navigation 🧭
 
@@ -152,14 +152,6 @@ docker build -t nvim .
 ```
 
 Replace `allaman/nvim` in the former commands with just `nvim`.
-
-## Installation
-
-I created an installation [script](install.sh) that sets up all required tools on a fresh machine to work with my Neovim config.
-
-For now, it works on Debian/Ubuntu and Arch. MacOS will be added soon.
-
-USE AT YOUR OWN RISK!!
 
 ## Requirements
 
