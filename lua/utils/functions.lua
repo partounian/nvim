@@ -66,7 +66,7 @@ end
 M.project_files = function()
   local path = vim.loop.cwd() .. "/.git"
   if M.path_exists(path) then
-    local show_untracked = vim.g.config.plugins.telescope.show_untracked_files
+    local show_untracked = M.safe_nested_config(vim.g.config.plugins, "telescope", "show_untracked_files")
     return "lua require('telescope.builtin').git_files({ show_untracked = " .. tostring(show_untracked) .. " })"
   else
     return "Telescope find_files"
@@ -234,6 +234,22 @@ end
 
 M.startLSP = function(lsp_name)
   require("lspconfig")[lsp_name].setup({})
+end
+
+---check if nested config is not nil
+---@param config any
+---@param ... string
+---@return any
+M.safe_nested_config = function(config, ...)
+  local elements = { ... }
+  local node = config
+  for i = 1, #elements do
+    node = node[elements[i]]
+    if node == nil then
+      return nil
+    end
+  end
+  return node
 end
 
 return M
