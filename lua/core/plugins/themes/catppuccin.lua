@@ -9,6 +9,9 @@ catppuccin.setup({
   integrations = {
     alpha = true,
     cmp = true,
+    colorful_winsep = {
+      enabled = true,
+    },
     dap = true,
     dap_ui = true,
     dropbar = { enabled = true },
