@@ -75,10 +75,13 @@ end
 
 -- Return file browser command
 M.file_browser = function()
-  if vim.g.config.plugins.lf.enable then
-    return "Lf"
+  if M.safe_nested_config(vim.g.config.plugins, "yazi", "enabled") then
+    return "<cmd>lua require('yazi').yazi(nil, vim.fn.getcwd())<cr>"
   end
-  return "Telescope file_browser grouped=true"
+  if M.safe_nested_config(vim.g.config.plugins, "lf", "enable") then
+    return "<cmd>Lf<cr>"
+  end
+  return "<cmd>Telescope file_browser grouped=true<cr>"
 end
 
 -- toggle quickfixlist
@@ -223,7 +226,7 @@ M.table_length = function(t)
 end
 
 M.stopLSP = function(lsp_name)
-  for _, client in ipairs(vim.lsp.get_active_clients()) do
+  for _, client in ipairs(vim.lsp.get_clients()) do
     if client.name == lsp_name then
       vim.lsp.stop_client(client.id)
       M.notify("Stopping LSP " .. lsp_name, vim.log.levels.INFO, "Utils")
