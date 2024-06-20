@@ -3,7 +3,6 @@ local M = {
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
     "RRethy/nvim-treesitter-endwise",
     "mfussenegger/nvim-ts-hint-textobject",
     "windwp/nvim-ts-autotag",
@@ -30,34 +29,6 @@ local M = {
       },
       indent = { enable = true },
       autopairs = { enable = true },
-      textobjects = {
-        select = {
-          enable = true,
-          -- Automatically jump forward to textobj, similar to targets.vim
-          lookahead = true,
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-            ["al"] = "@loop.outer",
-            ["il"] = "@loop.inner",
-            ["ib"] = "@block.inner",
-            ["ab"] = "@block.outer",
-            ["ir"] = "@parameter.inner",
-            ["ar"] = "@parameter.outer",
-          },
-        },
-      },
-      -- context_commentstring = { -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#getting-started
-      --   enable = true,
-      --   enable_autocmd = false,
-      --   config = {
-      --     sql = "-- %s",
-      --     tpl = "// %s",
-      --   },
-      -- },
     })
 
     vim.g.skip_ts_context_commentstring_module = true -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#getting-started
