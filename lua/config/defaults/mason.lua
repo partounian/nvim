@@ -41,7 +41,6 @@ return {
     "gofumpt",
     "goimports",
     "gomodifytags",
-    "golangci-lint",
     "gotests",
     "iferr",
     "impl",
