@@ -27,9 +27,22 @@ return {
       local mr = require("mason-registry")
       local function install_ensured()
         for _, tool in ipairs(conf.tools) do
-          local p = mr.get_package(tool)
+          local package_name, package_version
+          if tool:find("@") then
+            package_name, package_version = tool:match("([^@]+)@([^@]+)")
+          end
+          local p
+          if package_name then
+            p = mr.get_package(package_name)
+          else
+            p = mr.get_package(tool)
+          end
           if not p:is_installed() then
-            p:install()
+            if package_name then
+              p:install({ version = package_version })
+            else
+              p:install()
+            end
           end
         end
       end
