@@ -1,35 +1,50 @@
 return {
   "supermaven-inc/supermaven-nvim",
-  event = "InsertEnter",
+  -- TODO: determine if this is necessary or useful
+  -- event = "InsertEnter",
   enabled = vim.g.config.plugins.supermaven.enable,
-  dependencies = {
-    {
-      "zbirenbaum/copilot-cmp",
-      event = { "InsertEnter", "LspAttach" },
-      -- TODO: copied from lua/core/plugins/copilot.lua, determine if something like this is necessary
-      --   config = function(_, opts)
-      --     local function on_att(on_attach)
-      --       vim.api.nvim_create_autocmd("LspAttach", {
-      --         callback = function(args)
-      --           local buffer = args.buf
-      --           local client = vim.lsp.get_client_by_id(args.data.client_id)
-      --           on_attach(client, buffer)
-      --         end,
-      --       })
-      --     end
-      --     -- local copilot_cmp = require("copilot_cmp")
-      --     -- copilot_cmp.setup(opts)
-      --     -- attach cmp source whenever copilot attaches
-      --     -- fixes lazy-loading issues with the copilot cmp source
-      --     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/coding/copilot.lua#L61
-      --     on_att(function(client)
-      --       if client.name == "supermaven" then
-      --         copilot_cmp._on_insert_enter({})
-      --       end
-      --     end)
-      --   end,
-    },
-  },
+  dependencies = "hrsh7th/nvim-cmp",
+  -- TODO: determine if either blocks below are necessary or useful
+  -- dependencies = {
+  --  TODO: copied from lua/core/plugins/lazydev.lua
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = function(_, opts)
+  --     opts.sources = opts.sources or {}
+  --     table.insert(opts.sources, {
+  --       name = "supermaven",
+  --       group_index = 2,
+  --     })
+  --   end,
+  -- },
+
+  --  TODO: copied from lua/core/plugins/copilot.lua, determine if something like this is necessary
+  --   {
+  --     "zbirenbaum/copilot-cmp",
+  --     event = { "InsertEnter", "LspAttach" },
+  --     --   config = function(_, opts)
+  --     --     local function on_att(on_attach)
+  --     --       vim.api.nvim_create_autocmd("LspAttach", {
+  --     --         callback = function(args)
+  --     --           local buffer = args.buf
+  --     --           local client = vim.lsp.get_client_by_id(args.data.client_id)
+  --     --           on_attach(client, buffer)
+  --     --         end,
+  --     --       })
+  --     --     end
+  --     --     -- local copilot_cmp = require("copilot_cmp")
+  --     --     -- copilot_cmp.setup(opts)
+  --     --     -- attach cmp source whenever copilot attaches
+  --     --     -- fixes lazy-loading issues with the copilot cmp source
+  --     --     -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/coding/copilot.lua#L61
+  --     --     on_att(function(client)
+  --     --       if client.name == "supermaven" then
+  --     --         copilot_cmp._on_insert_enter({})
+  --     --       end
+  --     --     end)
+  --     --   end,
+  --   },
+  -- },
 
   config = function()
     local api = require("supermaven-nvim.api")
