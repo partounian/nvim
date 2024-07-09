@@ -31,6 +31,7 @@ local M = {
       autopairs = { enable = true },
     })
 
+    -- TODO: move to plugin spec init(?)
     vim.g.skip_ts_context_commentstring_module = true -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#getting-started
     require("ts_context_commentstring").setup({
       enable_autocmd = false,
