@@ -1,9 +1,11 @@
-local M = {
-  "JellyApple102/easyread.nvim",
-  config = true,
-}
-
 return {
-  M,
-  { "nullchilly/fsread.nvim" },
+  {
+    "JellyApple102/easyread.nvim",
+    cmd = { "EasyreadToggle" },
+    config = true,
+  },
+  {
+    "nullchilly/fsread.nvim",
+    cmd = { "FSRead", "FSToggle" },
+  },
 }
