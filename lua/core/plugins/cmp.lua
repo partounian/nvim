@@ -27,8 +27,8 @@ local M = {
       table.insert(sources, { name = "copilot", group_index = 2 })
     end
 
-    if vim.g.config.plugins.supermaven.enable then
-      table.insert(sources, { name = "supermaven", group_index = 2 })
+    if vim.g.config.plugins.supermaven.enabled then
+      table.insert(sources, { name = "supermaven" })
     end
 
     if vim.g.config.plugins.emoji.enable then
@@ -72,14 +72,14 @@ local M = {
       table.insert(format.symbol_map, { Copilot = icons.apps.Copilot })
     end
 
-    if vim.g.config.plugins.copilot.enable then
+    if vim.g.config.plugins.supermaven.enabled then
       local icons = require("utils.icons")
       table.insert(format.symbol_map, { Supermaven = icons.apps.Supermaven })
       vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#6CC644" })
     end
 
     local has_words_before = function()
-      if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
         return false
       end
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -107,7 +107,7 @@ local M = {
         }),
         -- TODO only when copilot is enabled
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
+          if cmp.visible() and has_words_before() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           else
             fallback()

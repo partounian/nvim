@@ -1,9 +1,7 @@
-local M = {
+return {
   "wfxr/minimap.vim",
   cmd = {
     "Minimap",
     "MinimapToggle",
   },
 }
-
-return M

@@ -8,11 +8,8 @@ return {
     -- TODO: https://github.com/folke/ts-comments.nvim
     enabled = not utils.isNeovimVersionsatisfied(10),
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      custom_commentstring = function()
-        return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
-      end,
-    },
+    -- is not loaded without explicitly saying it
+    config = true,
   },
   {
     "echasnovski/mini.surround",
