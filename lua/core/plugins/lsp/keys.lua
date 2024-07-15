@@ -53,8 +53,20 @@ M._keys = {
   { "<leader>lk", vim.lsp.buf.hover, desc = "Hover" },
   { "<leader>lS", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
   -- { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
-  { "<leader>ln", vim.diagnostic.goto_next, desc = "Next Diagnostic" },
-  { "<leader>lp", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" },
+  {
+    "<leader>ln",
+    function()
+      vim.diagnostic.jump({ count = 1 })
+    end,
+    desc = "Next Diagnostic",
+  },
+  {
+    "<leader>lp",
+    function()
+      vim.diagnostic.jump({ count = -1 })
+    end,
+    desc = "Prev Diagnostic",
+  },
   { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
   { "<leader>ls", lsp_key_mapping["lsp_document_symbols"], desc = "Document Symbols" },
   { "<leader>le", lsp_key_mapping["document_diagnostics"], desc = "Document Diagnostics" },
@@ -63,7 +75,7 @@ M._keys = {
   {
     "<leader>lh",
     function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
     end,
     desc = "Toggle Inlay Hints",
   },
@@ -72,13 +84,6 @@ M._keys = {
 function M.on_attach(client, buffer)
   local Keys = require("lazy.core.handler.keys")
   local keymaps = {}
-  local wk = require("which-key")
-
-  wk.register({
-    l = {
-      w = { "Workspaces" },
-    },
-  }, { prefix = "<leader>", mode = "n" })
 
   for _, value in ipairs(M._keys) do
     local keys = Keys.parse(value)
