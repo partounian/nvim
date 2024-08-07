@@ -21,10 +21,10 @@ else
   lsp_key_mapping["lsp_references"] = "<cmd>Telescope lsp_references<cr>"
   lsp_key_mapping["workspace_diagnostics"] = "<cmd>Telescope diagnostics<cr>"
   lsp_key_mapping["lsp_definitions"] = function()
-    require("telescope.builtin").lsp_definitions({ reuse_win = false })
+    require("telescope.builtin").lsp_definitions({ reuse_win = true })
   end
   lsp_key_mapping["lsp_type_definitions"] = function()
-    require("telescope.builtin").lsp_type_definitions({ reuse_win = false })
+    require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
   end
 end
 
