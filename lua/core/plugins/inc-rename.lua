@@ -1,5 +1,7 @@
 return {
   "smjonas/inc-rename.nvim",
   lazy = true,
-  config = true,
+  opts = {
+    input_buffer_type = "dressing",
+  },
 }
