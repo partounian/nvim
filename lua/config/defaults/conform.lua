@@ -45,6 +45,7 @@ return {
           python = { "isort", "ruff_format" },
           sh = { "shfmt" },
           terraform = { "terraform_fmt" },
+          ["terraform-vars"] = { "terraform_fmt" },
           tex = { "latexindent" },
           typescript = { { "prettierd", "prettier" } },
           typescriptreact = { { "prettierd", "prettier" } },
