@@ -24,6 +24,7 @@ local default_config = {
       { "<leader>l", group = "LSP" },
       { "<leader>m", group = "Misc" },
       { "<leader>q", group = "Quickfix" },
+      { "<leader>r", group = "RoR" },
       { "<leader>R", group = "Replace" },
       { "<leader>mS", group = "TreeSJ" },
       { "<leader>s", group = "Search" },
