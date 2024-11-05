@@ -5,8 +5,11 @@ local M = {
   name = "nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
+    { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+    { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+    { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+    { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+    "https://codeberg.org/FelipeLema/cmp-async-path",
     "hrsh7th/cmp-calc",
     "lukas-reineke/cmp-rg",
     "saadparwaiz1/cmp_luasnip",
