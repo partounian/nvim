@@ -73,7 +73,7 @@ local default_config = {
     { "<leader>mt", "<cmd>Telescope<cr>", desc = "Telescope" },
     -- Other
     { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Bufferlist" },
-    -- { "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in buffer" },
+    { "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in buffer" },
   },
   config_function = function(opts)
     telescope.setup(opts)
