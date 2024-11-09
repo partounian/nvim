@@ -13,7 +13,8 @@ return {
         conform.formatters.rubocop = {
           args = {
             "--cache",
-            "--server", -- some ppl say this is problematic
+            "true",
+            -- "--server", -- some ppl say having this enabled is problematic
             "-a",
             "-f",
             "quiet",
