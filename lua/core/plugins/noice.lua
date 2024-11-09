@@ -21,7 +21,7 @@ local default_config = {
     },
     routes = {
       { view = "notify", filter = { event = "msg_showmode" } }, -- show "recording macro"
-      --   { filter = { event = "msg_show", find = "written" }, opts = { skip = true } }, -- skip "write" message on save
+      { filter = { event = "msg_show", find = "written" }, opts = { skip = true } }, -- skip "write" message on save
     },
   },
   keys = {
