@@ -122,10 +122,18 @@ return {
         end,
       },
       {
-
         "leoluz/nvim-dap-go",
         config = true,
       },
+      -- not working :(
+      -- {
+      --   "suketa/nvim-dap-ruby",
+      --   config = true,
+      --   -- config = function()
+      --   --   local path = require("mason-registry").get_package("ruby_lsp"):get_install_path()
+      --   --   require("dap-ruby").setup(path .. "/venv/bin/ruby")
+      --   -- end,
+      -- },
     },
   },
 }
