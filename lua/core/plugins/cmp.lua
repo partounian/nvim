@@ -12,19 +12,28 @@ local M = {
     { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
     "https://codeberg.org/FelipeLema/cmp-async-path",
     "hrsh7th/cmp-calc",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
     "lukas-reineke/cmp-rg",
     "saadparwaiz1/cmp_luasnip",
+    -- { "petertriho/cmp-git", ft = { "gitcommit", "octo", "NeogitCommitMessage" } },
+    { "mtoohey31/cmp-fish", ft = "fish" },
+    { "David-Kunz/cmp-npm", ft = "json" },
   },
   config = function()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
 
     local sources = {
-      { name = "nvim_lsp", priority = 500 },
-      { name = "luasnip", priority = 1000 },
       { name = "calc", priority = 200 },
       { name = "path", priority = 300 },
       { name = "rg", keyword_length = 3, priority = 400 },
+      { name = "nvim_lsp", priority = 500 },
+      { name = "luasnip", priority = 500 },
+      { name = "nvim_lsp_signature_help" },
+      -- { name = "git" },
+      { name = "fish" },
+      { name = "npm", keyword_length = 4 },
     }
 
     if vim.g.config.plugins.emoji.enable then
@@ -121,6 +130,26 @@ local M = {
       },
       sources = sources,
     })
+
+    cmp.setup.cmdline("/", {
+      sources = cmp.config.sources({
+        { name = "nvim_lsp_document_symbol" },
+      }, {
+        { name = "buffer" },
+      }),
+    })
+
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = "path" },
+      }, {
+        { name = "cmdline" },
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false },
+    })
+
+    -- require("cmp_git").setup()
   end,
 }
 
