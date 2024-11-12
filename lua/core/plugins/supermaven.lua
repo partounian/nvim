@@ -19,8 +19,10 @@ return {
   "supermaven-inc/supermaven-nvim",
   enabled = config.enabled,
   event = "InsertEnter",
-  -- dependencies = "hrsh7th/nvim-cmp",
-  dependencies = "saghen/blink.cmp",
+  dependencies = {
+    { "hrsh7th/nvim-cmp", enabled = vim.g.config.plugins.cmp.enabled },
+    { "saghen/blink.cmp", enabled = vim.g.config.plugins.blink_cmp.enabled },
+  },
   opts = config.opts,
   keys = config.keys,
   config = function(_, opts)
