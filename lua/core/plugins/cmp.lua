@@ -2,6 +2,7 @@ local icons = require("utils.icons")
 
 local M = {
   "iguanacucumber/magazine.nvim",
+  enabled = vim.g.config.plugins.cmp.enabled,
   name = "nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
@@ -59,7 +60,6 @@ local M = {
         Event = "",
         Operator = "󰆕",
         TypeParameter = "",
-        Supermaven = "",
       },
     }
 
@@ -70,7 +70,12 @@ local M = {
 
     if vim.g.config.plugins.supermaven.enabled then
       table.insert(sources, { name = "supermaven" })
-      format.symbol_map.Supermave = icons.apps.Supermaven
+      format.symbol_map.Supermaven = icons.apps.Supermaven
+    end
+
+    if vim.g.config.plugins.codeium.enabled then
+      table.insert(sources, { name = "codeium" })
+      format.symbol_map.Codeium = icons.apps.Codeium
     end
 
     local has_words_before = function()

@@ -6,6 +6,7 @@ local default_config = {
   autostart = false,
   opts = {
     disable_inline_completion = true, -- disables inline completion for use with cmp
+    -- disable_keymaps = false, -- disables built in keymaps for more manual control
   },
   keys = {
     { "<leader>mC", "<cmd>SupermavenToggle<cr>", desc = "Toggle Supermaven" },
@@ -18,7 +19,8 @@ return {
   "supermaven-inc/supermaven-nvim",
   enabled = config.enabled,
   event = "InsertEnter",
-  dependencies = "hrsh7th/nvim-cmp",
+  -- dependencies = "hrsh7th/nvim-cmp",
+  dependencies = "saghen/blink.cmp",
   opts = config.opts,
   keys = config.keys,
   config = function(_, opts)

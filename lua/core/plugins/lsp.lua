@@ -7,9 +7,19 @@ return {
     dependencies = {
       { "onsails/lspkind-nvim" },
       { "folke/neoconf.nvim", config = true, ft = "lua" }, -- must be loaded before lsp
+      -- { "saghen/blink.cmp" },
     },
-    config = function()
+    config = function(_, opts)
       require("core.plugins.lsp.lsp")
+
+      if vim.g.config.plugins.blink_cmp.enabled then
+        -- for blink.cmp
+        local lspconfig = require("lspconfig")
+        for server, config in pairs(opts.servers or {}) do
+          config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+          lspconfig[server].setup(config)
+        end
+      end
     end,
   },
   {

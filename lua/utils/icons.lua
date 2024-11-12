@@ -2,6 +2,7 @@ return {
   apps = {
     Copilot = "",
     Supermaven = "",
+    Codeium = "",
   },
   arrows = {
     ArrowRight = "❯",

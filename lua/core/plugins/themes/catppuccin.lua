@@ -8,6 +8,7 @@ catppuccin.setup({
   default_integrations = false,
   integrations = {
     alpha = true,
+    blink_cmp = true,
     cmp = true,
     colorful_winsep = {
       enabled = true,
