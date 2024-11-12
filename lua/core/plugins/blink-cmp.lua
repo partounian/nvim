@@ -2,10 +2,10 @@ return {
   {
     "saghen/blink.compat",
     cond = vim.g.config.plugins.blink_cmp.enabled,
-    -- opts = {
-    --   impersonate_nvim_cmp = true,
-    --   enable_events = true,
-    -- },
+    opts = {
+      -- impersonate_nvim_cmp = true,
+      enable_events = true,
+    },
   },
   {
     "saghen/blink.cmp",
@@ -81,6 +81,7 @@ return {
           supermaven = {
             name = "supermaven",
             module = "blink.compat.source",
+            score_offset = 1,
           },
           path = {
             name = "Path",
