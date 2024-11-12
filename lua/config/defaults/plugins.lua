@@ -5,6 +5,15 @@ return {
       enable = false,
       opts = {},
     },
+    -- https://github.com/Exafunction/codeium.nvim
+    codeium = {
+      enabled = false,
+      opts = {
+        virtual_text = {
+          enabled = true,
+        },
+      },
+    },
     -- https://github.com/zbirenbaum/copilot.lua
     copilot = {
       enable = false,

@@ -1,6 +1,7 @@
 return {
   {
     "saghen/blink.compat",
+    cond = vim.g.config.plugins.blink_cmp.enabled,
     -- opts = {
     --   impersonate_nvim_cmp = true,
     --   enable_events = true,
@@ -8,7 +9,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    enabled = vim.g.config.plugins.blink_cmp.enabled,
+    cond = vim.g.config.plugins.blink_cmp.enabled,
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
     dependencies = {

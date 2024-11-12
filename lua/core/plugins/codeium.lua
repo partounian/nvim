@@ -1,16 +1,12 @@
-local config = vim.g.config.plugins.codeium or {}
+local conf = vim.g.config.plugins.codeium
 
 return {
   "Exafunction/codeium.nvim",
-  enabled = config.enabled,
+  enabled = conf.enabled,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",
   },
   event = "BufEnter",
-  opts = {
-    virtual_text = {
-      enabled = true,
-    },
-  },
+  opts = conf.opts,
 }

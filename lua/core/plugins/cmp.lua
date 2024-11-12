@@ -2,7 +2,7 @@ local icons = require("utils.icons")
 
 local M = {
   "iguanacucumber/magazine.nvim",
-  enabled = vim.g.config.plugins.cmp.enabled,
+  cond = vim.g.config.plugins.cmp.enabled,
   name = "nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
