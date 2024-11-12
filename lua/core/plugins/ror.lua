@@ -1,5 +1,6 @@
 return {
   "weizheheng/ror.nvim",
+  ft = "ruby",
   keys = {
     { "<leader>rc", ":lua require('ror.commands').list_commands()<CR>", desc = "Commands" },
     { "<leader>rf", ":lua require('ror.finders').select_finders()<CR>", desc = "Finders" },
