@@ -10,19 +10,6 @@ return {
       config_function = function(opts)
         local conform = require("conform")
         conform.setup(opts)
-        conform.formatters.rubocop = {
-          args = {
-            "--cache",
-            "true",
-            -- "--server", -- some ppl say having this enabled is problematic
-            "-a",
-            "-f",
-            "quiet",
-            "--stderr",
-            "--stdin",
-            "$FILENAME",
-          },
-        }
         conform.formatters.shfmt = {
           prepend_args = { "-i", "2" }, -- 2 spaces instead of tab
         }
