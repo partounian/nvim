@@ -1,17 +1,24 @@
 local catppuccin = require("catppuccin")
 local utils = require("utils.functions")
 
+local colorful_winsep_enabled = utils.safe_nested_config(vim.g.config.plugins, "colorful_winsep", "enabled")
+local blink_cmp_enabled = utils.safe_nested_config(vim.g.config.plugins, "blink_cmp", "enabled")
 local harpoon_enabled = utils.safe_nested_config(vim.g.config.plugins, "harpoon", "enabled")
 local trouble_enabled = utils.safe_nested_config(vim.g.config.plugins, "trouble", "enabled")
 
 catppuccin.setup({
+  flavour = "auto", -- latte, frappe, macchiato, mocha
+  background = { -- :h background https://github.com/catppuccin/nvim/blob/637d99e638bc6f1efedac582f6ccab08badac0c6/lua/catppuccin/types.lua#L45-L51
+    light = "latte",
+    dark = "macchiato",
+  },
   default_integrations = false,
   integrations = {
     alpha = true,
-    blink_cmp = true,
+    blink_cmp = blink_cmp_enabled,
     cmp = true,
     colorful_winsep = {
-      enabled = true,
+      enabled = colorful_winsep_enabled,
     },
     dap = true,
     dap_ui = true,
@@ -56,4 +63,5 @@ catppuccin.setup({
   },
 })
 
-vim.cmd("colorscheme " .. vim.g.config.theme.catppuccin.variant)
+-- vim.cmd("colorscheme " .. vim.g.config.theme.catppuccin.variant)
+vim.cmd.colorscheme("catppuccin")
