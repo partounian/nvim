@@ -14,7 +14,7 @@ catppuccin.setup({
   },
   default_integrations = false,
   integrations = {
-    alpha = true,
+    alpha = false,
     blink_cmp = blink_cmp_enabled,
     cmp = true,
     colorful_winsep = {

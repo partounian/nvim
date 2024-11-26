@@ -3,12 +3,17 @@ local user_conf = vim.g.config.plugins.lualine or {}
 local default_options = {
   extensions = vim.g.config.plugins.lualine.extensions,
   options = {
-    disabled_filetypes = { "alpha", "dashboard", "neo-tree" },
+    disabled_filetypes = { "neo-tree", "snacks_dashboard" },
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },
   },
   sections = {
-    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_a = {}, -- hide mode
+    lualine_b = {
+      "branch",
+      "diff",
+      { "diagnostics", sources = { "nvim_lsp" } },
+    },
     lualine_c = {
       {
         "filename",

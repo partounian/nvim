@@ -39,10 +39,6 @@ return {
       -- https://github.com/olexsmir/gopher.nvim
       enable = false,
     },
-    indent_blankline = {
-      enable = false,
-      enable_scope = true,
-    },
     -- https://github.com/Allaman/kustomize.nvim
     kustomize = {
       dev = false,
@@ -82,13 +78,6 @@ return {
     },
     noice = {
       enable = true, -- Noice heavily changes the Neovim UI ...
-    },
-    oil = {
-      --- https://github.com/stevearc/oil.nvim
-      enable = false,
-      key_mappings = function()
-        vim.keymap.set("n", "_", "<cmd>Oil<cr>", { desc = "Open oil" })
-      end,
     },
     overseer = {
       -- https://github.com/stevearc/overseer.nvim
