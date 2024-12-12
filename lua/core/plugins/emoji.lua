@@ -9,6 +9,7 @@ local config = vim.tbl_deep_extend("force", default_config, user_config)
 return {
   {
     "allaman/emoji.nvim",
+    enabled = config.enabled,
     ft = "markdown",
     dependencies = "hrsh7th/nvim-cmp",
     opts = config.opts,
@@ -16,7 +17,6 @@ return {
       require("emoji").setup(opts)
       require("telescope").load_extension("emoji")
     end,
-    dev = true,
   },
 
   {
