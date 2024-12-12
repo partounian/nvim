@@ -1,8 +1,6 @@
 local catppuccin = require("catppuccin")
 local utils = require("utils.functions")
 
-local colorful_winsep_enabled = utils.safe_nested_config(vim.g.config.plugins, "colorful_winsep", "enabled")
-local blink_cmp_enabled = utils.safe_nested_config(vim.g.config.plugins, "blink_cmp", "enabled")
 local harpoon_enabled = utils.safe_nested_config(vim.g.config.plugins, "harpoon", "enabled")
 local trouble_enabled = utils.safe_nested_config(vim.g.config.plugins, "trouble", "enabled")
 
@@ -15,11 +13,7 @@ catppuccin.setup({
   default_integrations = false,
   integrations = {
     alpha = false,
-    blink_cmp = blink_cmp_enabled,
     cmp = true,
-    colorful_winsep = {
-      enabled = colorful_winsep_enabled,
-    },
     dap = true,
     dap_ui = true,
     dropbar = { enabled = true },

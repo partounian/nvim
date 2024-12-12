@@ -33,49 +33,25 @@ local default_options = {
 }
 
 local function default_config_function(opts)
-  -- TODO: Add supermaven
-  local lsp_utils = require("core.plugins.lsp.utils")
-  local utils = require("utils.functions")
-  local function list_LSP_clients()
-    local clients = lsp_utils.get_LSP_clients()
-    local list = {}
-    for _, client in ipairs(clients) do
-      table.insert(list, client.name)
-      -- TODO only indicate a running copilot?
-      -- if client.name == "copilot" then
-      --   local icons = require("utils.icons")
-      --   return icons.apps.Copilot
-      -- end
-    end
-    return table.concat(list, "|")
-  end
-  opts.sections.lualine_a = {
-    {
-      list_LSP_clients,
-      cond = function()
-        return utils.table_length(lsp_utils.get_LSP_clients()) > 0
-      end,
-    },
-  }
-
   -- Show info when recording a macro
   local function is_macro_recording()
     local reg = vim.fn.reg_recording()
     if reg == "" then
       return ""
     end
-    return "Rec to " .. reg
+    return "󰑋 " .. reg
   end
 
   table.insert(opts.sections.lualine_x, 1, {
     is_macro_recording,
-    color = { fg = "red", gui = "italic" },
+    color = { fg = "#333333", bg = "#ff6666" },
+    separator = { left = "", right = "" },
     cond = function()
       return is_macro_recording() ~= ""
     end,
   })
 
-  -- Don't display if encoding is UTF-8
+  -- Don't display encoding if encoding is UTF-8
   local function encoding()
     local ret, _ = (vim.bo.fenc or vim.go.enc):gsub("^utf%-8$", "")
     return ret
@@ -88,7 +64,7 @@ local function default_config_function(opts)
     end,
   })
 
-  -- Don't display if fileformat is unix
+  -- Don't display fileformat if fileformat is unix
   local function fileformat()
     local ret, _ = vim.bo.fileformat:gsub("^unix$", "")
     return ret

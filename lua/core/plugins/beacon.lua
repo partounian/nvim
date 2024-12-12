@@ -1,1 +1,4 @@
-return { "danilamihailov/beacon.nvim" }
+return {
+  "danilamihailov/beacon.nvim",
+  event = "VeryLazy",
+}

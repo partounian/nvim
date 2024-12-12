@@ -10,13 +10,18 @@ return {
     cursorline = true, -- highlight the current line
     dir = fn.stdpath("data") .. "/swp", -- swap file directory
     expandtab = true, -- use spaces instead of tabs
+    foldenable = true,
+    foldexpr = "v:lua.vim.lsp.foldexpr()",
+    foldlevel = 99,
+    foldlevelstart = 99,
+    foldmethod = "expr",
     formatoptions = "jcroqlnt", -- tcqj
-    fillchars = "eob: ", -- hide ~ at the end of buffer
+    fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:", -- hide ~ at the end of buffer and set fold symbols
     grepprg = "rg --vimgrep --smart-case --", -- use rg instead of grep
     hidden = true, -- Enable modified buffers in background
     history = 500, -- Use the 'history' option to set the number of lines from command mode that are remembered.
     ignorecase = true, -- ignore case in search patterns
-    inccommand = "nosplit", -- preview incremental substitute
+    inccommand = "split",
     list = false, -- enable or disable listchars
     listchars = {
       eol = "↲",
@@ -32,7 +37,7 @@ return {
     pumblend = 10, -- Popup blend
     pumheight = 10, -- Maximum number of entries in a popup
     relativenumber = true, -- set relative numbered lines
-    scrolloff = 3, -- Minimal number of screen lines to keep above and below the cursor
+    scrolloff = 5, -- Minimal number of screen lines to keep above and below the cursor
     sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
     shiftround = true, -- Round indent
     shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -42,6 +47,7 @@ return {
     signcolumn = "yes", -- Always show the signcolumn, otherwise it would shift the text each time
     smartcase = true, -- Don't ignore case with capitals
     smartindent = true, -- Insert indents automatically
+    spell = false,
     splitbelow = true, -- force all horizontal splits to go below current window
     splitright = true, -- force all vertical splits to go to the right of current window
     swapfile = true, -- enable/disable swap file creation

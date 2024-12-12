@@ -1,9 +1,15 @@
-local icons = require("utils.icons")
+local user_config = vim.g.config.plugins.cmp or {}
 
-local M = {
+local default_config = {
+  enabled = false,
+}
+
+local config = vim.tbl_deep_extend("force", default_config, user_config)
+
+return {
   "iguanacucumber/magazine.nvim",
-  cond = vim.g.config.plugins.cmp.enabled,
   name = "nvim-cmp",
+  enabled = config.enabled,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
@@ -72,6 +78,8 @@ local M = {
       },
     }
 
+    local icons = require("utils.icons")
+
     if vim.g.config.plugins.copilot.enable then
       table.insert(sources, { name = "copilot", group_index = 2 })
       table.insert(format.symbol_map, { Copilot = icons.apps.Copilot })
@@ -114,7 +122,6 @@ local M = {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         }),
-        -- TODO only when copilot is enabled
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -152,5 +159,3 @@ local M = {
     -- require("cmp_git").setup()
   end,
 }
-
-return M

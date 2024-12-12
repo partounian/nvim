@@ -33,14 +33,13 @@ return {
   {
     "echasnovski/mini.align",
     event = { "BufReadPre", "BufNewFile" },
-    config = function(_, opts)
-      require("mini.align").setup()
-    end,
+    opts = {},
   },
 
   {
     "echasnovski/mini.test",
-    event = { "BufReadPre", "BufNewFile" },
+    ft = "lua",
+    opts = {},
   },
 
   {
@@ -82,19 +81,6 @@ return {
         require("mini.icons").mock_nvim_web_devicons()
         return package.loaded["nvim-web-devicons"]
       end
-    end,
-  },
-
-  {
-    "echasnovski/mini.indentscope",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("mini.indentscope").setup({
-        symbol = "╎",
-        draw = {
-          animation = require("mini.indentscope").gen_animation.none(),
-        },
-      })
     end,
   },
 }
