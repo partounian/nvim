@@ -5,6 +5,9 @@ local default_config = {
   enabled = false,
   autostart = false,
   opts = {
+    keymaps = {
+      accept_suggestion = nil, -- handled by nvim-cmp / blink.cmp
+    },
     disable_inline_completion = true, -- disables inline completion for use with cmp
   },
   keys = {
@@ -18,7 +21,14 @@ return {
   "supermaven-inc/supermaven-nvim",
   enabled = config.enabled,
   event = "InsertEnter",
-  dependencies = "hrsh7th/nvim-cmp",
+  dependencies = {
+    -- { "hrsh7th/nvim-cmp" },
+    -- { "saghen/blink.cmp", enabled = vim.g.config.plugins.blink.enabled },
+  },
+  -- dependencies = {
+  --   { "hrsh7th/nvim-cmp", enabled = vim.g.config.plugins.cmp.enabled },
+  --   { "saghen/blink.cmp", enabled = vim.g.config.plugins.blink.enabled },
+  -- },
   opts = config.opts,
   keys = config.keys,
   config = function(_, opts)

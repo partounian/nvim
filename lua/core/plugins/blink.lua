@@ -1,4 +1,5 @@
 -- much was stolen from LazyVim :)
+-- https://github.com/LazyVim/LazyVim/blob/475e3f32b82db0cc497f712953993dcce4f048c6/lua/lazyvim/plugins/extras/coding/blink.lua
 -- TODO: copilot and supermaven itegration
 local user_config = vim.g.config.plugins.blink or {}
 
@@ -24,13 +25,13 @@ local default_config = {
       ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
 
-    sources = {
-      compat = {},
-      completion = {
-        enabled_providers = { "lsp", "path", "luasnip", "buffer" },
-      },
-    },
     completion = {
+      accept = {
+        -- experimental auto-brackets support
+        auto_brackets = {
+          enabled = true,
+        },
+      },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 250,
@@ -40,14 +41,21 @@ local default_config = {
           -- nvim-cmp look
           -- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
           columns = { { "label", "label_description", gap = 1 }, { "kind_icon" } },
+          treesitter = true,
         },
       },
+      ghost_text = {
+        enabled = true,
+      },
     },
-    -- experimental auto-brackets support
-    -- completion = { accept = { auto_brackets = { enabled = true } } }
 
-    -- experimental signature help support
-    -- signature = { enabled = true }
+    sources = {
+      compat = {},
+      default = { "lsp", "path", "luasnip", "buffer" },
+      -- completion = {
+      --   enabled_providers = { "lsp", "path", "luasnip", "buffer" },
+      -- },
+    },
   },
 }
 
@@ -56,6 +64,7 @@ local config = vim.tbl_deep_extend("force", default_config, user_config)
 return {
   {
     "saghen/blink.cmp",
+    version = "v0.*",
     event = "InsertEnter",
     enabled = config.enabled,
     dependencies = {
@@ -63,18 +72,21 @@ return {
       {
         "saghen/blink.compat",
         optional = true,
+        version = "*",
+        lazy = true,
         opts = {},
       },
     },
-    version = "v0.*",
     opts = config.opts,
     opts_extend = {
       "sources.completion.enabled_providers",
       "sources.compat",
+      "sources.default",
+      -- "sources.providers",
     },
     config = function(_, opts)
       -- setup compat sources and provider
-      local enabled = opts.sources.completion.enabled_providers
+      local enabled = opts.sources.default
       for _, source in ipairs(opts.sources.compat or {}) do
         opts.sources.providers[source] = vim.tbl_deep_extend(
           "force",
@@ -85,6 +97,10 @@ return {
           table.insert(enabled, source)
         end
       end
+
+      -- TODO: remove when blink made a new release > 0.7.6
+      opts.sources.completion = opts.sources.completion or {}
+      opts.sources.completion.enabled_providers = enabled
 
       -- check if we need to override symbol kinds
       for _, provider in pairs(opts.sources.providers or {}) do
@@ -109,20 +125,64 @@ return {
     end,
   },
 
+  -- add icons
+  {
+    "saghen/blink.cmp",
+    opts = function(_, opts)
+      opts.appearance = opts.appearance or {}
+      opts.appearance.kind_icons = {
+        Array = " ",
+        Boolean = "󰨙 ",
+        Class = " ",
+        Codeium = "󰘦 ",
+        Color = " ",
+        Control = " ",
+        Collapsed = " ",
+        Constant = "󰏿 ",
+        Constructor = " ",
+        Copilot = " ",
+        Enum = " ",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = " ",
+        Folder = " ",
+        Function = "󰊕 ",
+        Interface = " ",
+        Key = " ",
+        Keyword = " ",
+        Method = "󰊕 ",
+        Module = " ",
+        Namespace = "󰦮 ",
+        Null = " ",
+        Number = "󰎠 ",
+        Object = " ",
+        Operator = " ",
+        Package = " ",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        String = " ",
+        Struct = "󰆼 ",
+        Supermaven = " ",
+        TabNine = "󰏚 ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = " ",
+        Value = " ",
+        Variable = "󰀫 ",
+      }
+    end,
+  },
+
   -- lazydev integration
   {
     "saghen/blink.cmp",
     opts = {
       sources = {
-        completion = {
-          -- add lazydev to your completion providers
-          enabled_providers = { "lazydev" },
-        },
+        -- add lazydev to your completion providers
+        default = { "lazydev" },
         providers = {
-          lsp = {
-            -- dont show LuaLS require statements when lazydev has items
-            fallback_for = { "lazydev" },
-          },
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
@@ -131,6 +191,30 @@ return {
       },
     },
   },
+  -- catppucci
+  -- lazydev integration
+  -- {
+  --   "saghen/blink.cmp",
+  --   optional = true,
+  --   opts = {
+  --     sources = {
+  --       completion = {
+  --         -- add lazydev to your completion providers
+  --         enabled_providers = { "lazydev" },
+  --       },
+  --       providers = {
+  --         lsp = {
+  --           -- dont show LuaLS require statements when lazydev has items
+  --           fallback_for = { "lazydev" },
+  --         },
+  --         lazydev = {
+  --           name = "LazyDev",
+  --           module = "lazydev.integrations.blink",
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
   -- luasnip integration
   {
     "saghen/blink.cmp",
@@ -163,6 +247,32 @@ return {
     optional = true,
     opts = {
       integrations = { blink_cmp = true },
+    },
+  },
+
+  -- supermaven integration
+  {
+    "saghen/blink.cmp",
+    optional = true,
+    dependencies = {
+      { "blink.compat" },
+      { "supermaven-nvim" },
+    },
+    opts = {
+      sources = {
+        compat = { "supermaven" },
+        providers = { supermaven = { kind = "Supermaven" } },
+        -- completion = {
+        --   enabled_providers = { "supermaven" },
+        -- },
+        -- providers = {
+        --   supermaven = {
+        --     name = "supermaven",
+        --     module = "blink.compat.source",
+        --     score_offset = 3,
+        --   },
+        -- },
+      },
     },
   },
 }
