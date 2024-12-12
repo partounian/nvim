@@ -41,7 +41,6 @@ end
 local default_config = {
   grep_hidden = true,
   fzf_native = false,
-  fzy_native = false,
   show_untracked_files = false,
   keys = {
     -- Search stuff
@@ -213,13 +212,6 @@ if config.fzf_native then
   })
 end
 
-if config.fzy_native then
-  table.insert(config.opts.extensions.fzy_native, {
-    override_generic_sorter = false,
-    override_file_sorter = true,
-  })
-end
-
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -241,15 +233,6 @@ return {
     lazy = "true",
     config = function()
       telescope.load_extension("fzf")
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-fzy-native.nvim",
-    enabled = config.fzy_native,
-    lazy = "true",
-    config = function()
-      telescope.load_extension("fzy_native")
     end,
   },
 
