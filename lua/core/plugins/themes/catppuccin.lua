@@ -18,6 +18,7 @@ catppuccin.setup({
     dap_ui = true,
     dropbar = { enabled = true },
     fidget = false,
+    fzf = true,
     gitsigns = true,
     harpoon = harpoon_enabled,
     headlines = true,

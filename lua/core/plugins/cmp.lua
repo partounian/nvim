@@ -75,6 +75,7 @@ return {
         Event = "",
         Operator = "󰆕",
         TypeParameter = "",
+        Supermaven = "",
       },
     }
 
