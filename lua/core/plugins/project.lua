@@ -42,6 +42,7 @@ local M = {
     },
     patterns = {
       ".git",
+      "composer.json",
       "package.json",
       ".terraform",
       "go.mod",

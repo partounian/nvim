@@ -36,7 +36,7 @@ local default_config = {
     },
 
     sources = {
-      default = { "lsp", "path", "luasnip", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer" },
       providers = {
         lsp = {
           min_keyword_length = 2, -- Number of characters to trigger porvider
@@ -45,9 +45,9 @@ local default_config = {
         path = {
           min_keyword_length = 0,
         },
-        luasnip = {
-          min_keyword_length = 2,
-        },
+        -- luasnip = {
+        --   min_keyword_length = 2,
+        -- },
         buffer = {
           min_keyword_length = 5,
           max_items = 5,
@@ -67,8 +67,11 @@ local default_config = {
         treesitter_highlighting = true,
         window = { border = "rounded" },
       },
+      -- list = {
+      --   selection = "auto_insert",
+      -- },
       list = {
-        selection = "auto_insert",
+        selection = { preselect = false, auto_insert = true },
       },
       trigger = {
         show_on_insert_on_trigger_character = false,
@@ -105,7 +108,7 @@ return {
         opts = {},
       },
     },
-    version = "v0.*",
+    version = "*",
     opts = config.opts,
     opts_extend = {
       "sources.default",
@@ -131,16 +134,16 @@ return {
         if provider.kind then
           require("blink.cmp.types").CompletionItemKind[provider.kind] = provider.kind
           ---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
-          local transform_items = provider.transform_items
-          ---@param ctx blink.cmp.Context
-          ---@param items blink.cmp.CompletionItem[]
-          provider.transform_items = function(ctx, items)
-            items = transform_items and transform_items(ctx, items) or items
-            for _, item in ipairs(items) do
-              item.kind = provider.kind or item.kind
-            end
-            return items
-          end
+          -- local transform_items = provider.transform_items
+          -- ---@param ctx blink.cmp.Context
+          -- ---@param items blink.cmp.CompletionItem[]
+          -- provider.transform_items = function(ctx, items)
+          --   items = transform_items and transform_items(ctx, items) or items
+          --   for _, item in ipairs(items) do
+          --     item.kind = provider.kind or item.kind
+          --   end
+          --   return items
+          -- end
         end
       end
 
@@ -168,26 +171,26 @@ return {
     },
   },
   -- luasnip integration
-  {
-    "saghen/blink.cmp",
-    optional = true,
-    opts = {
-      snippets = {
-        expand = function(snippet)
-          require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require("luasnip").jumpable(filter.direction)
-          end
-          return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-          require("luasnip").jump(direction)
-        end,
-      },
-    },
-  },
+  -- {
+  --   "saghen/blink.cmp",
+  --   optional = true,
+  --   opts = {
+  --     snippets = {
+  --       expand = function(snippet)
+  --         require("luasnip").lsp_expand(snippet)
+  --       end,
+  --       active = function(filter)
+  --         if filter and filter.direction then
+  --           return require("luasnip").jumpable(filter.direction)
+  --         end
+  --         return require("luasnip").in_snippet()
+  --       end,
+  --       jump = function(direction)
+  --         require("luasnip").jump(direction)
+  --       end,
+  --     },
+  --   },
+  -- },
   -- catppuccin integration
   {
     "catppuccin",
