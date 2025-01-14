@@ -26,7 +26,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  event = "VeryLazy",
+  lazy = true, -- use `event = "VeryLazy"` for netrw replacement
   keys = config.keys,
   opts = config.opts,
 }
