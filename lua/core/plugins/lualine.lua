@@ -4,8 +4,6 @@ local default_options = {
   extensions = vim.g.config.plugins.lualine.extensions,
   options = {
     disabled_filetypes = { "neo-tree", "snacks_dashboard" },
-    section_separators = { left = "", right = "" },
-    component_separators = { left = "", right = "" },
   },
   sections = {
     lualine_a = {}, -- hide mode

@@ -36,6 +36,8 @@ return {
         end,
         -- log_level = vim.log.levels.TRACE,
         formatters_by_ft = {
+          -- probably best to specify file types for the below, it enables things like formatting HTML in PHP, SQL in Go etc etc
+          -- ["*"] = { "injected" }, -- enables injected-lang formatting for all filetypes
           go = { "goimports", "gofmt" },
           javascript = { "prettier" },
           json = { "prettier" },
@@ -43,6 +45,7 @@ return {
           markdown = { "prettier" },
           python = { "isort", "ruff_format" },
           sh = { "shfmt" },
+          sql = { "sqruff" },
           terraform = { "terraform_fmt" },
           ["terraform-vars"] = { "terraform_fmt" },
           tex = { "latexindent" },

@@ -3,7 +3,11 @@ local user_config = vim.g.config.plugins.todo_comments or {}
 local default_config = {
   enabled = false,
   event = { "VeryLazy" },
-  opts = {},
+  opts = {
+    highlight = {
+      multiline = false, -- I usually only want one line to be highlighted
+    },
+  },
   keys = {
     {
       "<leader>qT",
