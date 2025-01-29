@@ -22,7 +22,6 @@ catppuccin.setup({
     gitsigns = true,
     harpoon = harpoon_enabled,
     headlines = true,
-    indent_blankline = { enabled = true },
     lsp_trouble = trouble_enabled,
     markdown = true,
     mason = true,
