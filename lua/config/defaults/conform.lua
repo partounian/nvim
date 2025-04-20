@@ -39,10 +39,12 @@ return {
           -- probably best to specify file types for the below, it enables things like formatting HTML in PHP, SQL in Go etc etc
           -- ["*"] = { "injected" }, -- enables injected-lang formatting for all filetypes
           go = { "goimports", "gofmt" },
-          javascript = { "prettier" },
-          json = { "prettier" },
+          javascript = { "prettierd" },
+          json = { "prettierd" },
           lua = { "stylua" },
-          markdown = { "prettier" },
+          html = { "prettierd", "html-lsp" },
+          markdown = { "prettierd" },
+          php = { "injected" },
           python = { "isort", "ruff_format" },
           sh = { "shfmt" },
           sql = { "sqruff" },
